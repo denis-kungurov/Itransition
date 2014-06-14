@@ -1,0 +1,171 @@
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\MvcApplication4.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\MvcApplication4.pdb
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\Antlr3.Runtime.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.AspNet.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.Core.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.OAuth.Consumer.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.OAuth.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.OpenId.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\EntityFramework.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\Microsoft.Data.Edm.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\Microsoft.Data.OData.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\Microsoft.Web.Infrastructure.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\Microsoft.Web.WebPages.OAuth.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\Newtonsoft.Json.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Net.Http.Formatting.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Spatial.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Web.Helpers.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Web.Http.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Web.Http.OData.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Web.Http.WebHost.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Web.Mvc.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Web.Optimization.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Web.Razor.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Web.WebPages.Deployment.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Web.WebPages.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Web.WebPages.Razor.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\WebGrease.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\WebMatrix.Data.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\WebMatrix.WebData.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\EntityFramework.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\Newtonsoft.Json.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Net.Http.Formatting.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Web.Helpers.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Web.Http.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Web.Http.WebHost.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Web.Mvc.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Web.Razor.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Web.WebPages.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Web.WebPages.Deployment.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Web.WebPages.Razor.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\WebMatrix.Data.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\Microsoft.Web.WebPages.OAuth.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\WebMatrix.WebData.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.AspNet.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.Core.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.OAuth.Consumer.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.OAuth.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.OpenId.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Web.Http.OData.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\Microsoft.Data.Edm.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\Microsoft.Data.OData.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\System.Spatial.xml
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\de\Microsoft.Data.Edm.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\es\Microsoft.Data.Edm.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\fr\Microsoft.Data.Edm.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\it\Microsoft.Data.Edm.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\ja\Microsoft.Data.Edm.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\ko\Microsoft.Data.Edm.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\ru\Microsoft.Data.Edm.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\de\Microsoft.Data.OData.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\es\Microsoft.Data.OData.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\fr\Microsoft.Data.OData.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\it\Microsoft.Data.OData.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\ja\Microsoft.Data.OData.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\ko\Microsoft.Data.OData.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\ru\Microsoft.Data.OData.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\de\System.Spatial.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\es\System.Spatial.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\fr\System.Spatial.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\it\System.Spatial.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\ja\System.Spatial.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\ko\System.Spatial.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\ru\System.Spatial.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\zh-Hans\System.Spatial.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\bin\zh-Hant\System.Spatial.resources.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\obj\Debug\MvcApplication4.csprojResolveAssemblyReference.cache
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\obj\Debug\MvcApplication4.dll
+c:\users\tkachev\documents\visual studio 2012\Projects\MvcApplication4\MvcApplication4\obj\Debug\MvcApplication4.pdb
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\MvcApplication4.dll.config
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\MvcApplication4.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\MvcApplication4.pdb
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\Antlr3.Runtime.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.AspNet.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.Core.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.OAuth.Consumer.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.OAuth.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.OpenId.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\EntityFramework.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\Microsoft.Data.Edm.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\Microsoft.Data.OData.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\Microsoft.Web.Infrastructure.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\Microsoft.Web.WebPages.OAuth.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\Newtonsoft.Json.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Net.Http.Formatting.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Spatial.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Web.Helpers.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Web.Http.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Web.Http.OData.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Web.Http.WebHost.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Web.Mvc.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Web.Optimization.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Web.Razor.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Web.WebPages.Deployment.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Web.WebPages.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Web.WebPages.Razor.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\WebGrease.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\WebMatrix.Data.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\WebMatrix.WebData.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\EntityFramework.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\Newtonsoft.Json.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Net.Http.Formatting.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Web.Helpers.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Web.Http.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Web.Http.WebHost.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Web.Mvc.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Web.Razor.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Web.WebPages.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Web.WebPages.Deployment.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Web.WebPages.Razor.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\WebMatrix.Data.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\Microsoft.Web.WebPages.OAuth.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\WebMatrix.WebData.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.AspNet.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.Core.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.OAuth.Consumer.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.OAuth.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.OpenId.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Web.Http.OData.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\Microsoft.Data.Edm.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\Microsoft.Data.OData.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\System.Spatial.xml
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\de\Microsoft.Data.Edm.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\es\Microsoft.Data.Edm.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\it\Microsoft.Data.Edm.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\de\Microsoft.Data.OData.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\es\Microsoft.Data.OData.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\fr\Microsoft.Data.OData.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\it\Microsoft.Data.OData.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\ja\Microsoft.Data.OData.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\ko\Microsoft.Data.OData.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\ru\Microsoft.Data.OData.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\de\System.Spatial.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\es\System.Spatial.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\fr\System.Spatial.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\it\System.Spatial.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\ja\System.Spatial.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\ko\System.Spatial.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\ru\System.Spatial.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\zh-Hans\System.Spatial.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\bin\zh-Hant\System.Spatial.resources.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\obj\Debug\MvcApplication4.csprojResolveAssemblyReference.cache
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\obj\Debug\MvcApplication4.dll
+D:\iTransition\Курсовая работа\Работа\MvcApplication4\MvcApplication4\obj\Debug\MvcApplication4.pdb

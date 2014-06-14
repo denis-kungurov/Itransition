@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="row" style="margin-right: 0">
+    <div class="jumbotron jumb col-xs-6 col-lg-8 col-md-7">
+        <h1 style="margin-top: 10px">Sell your Time</h1>
+        <p><h4>
+               Вы можете купить встречу с понравившимся вам человеком, и он сходит с вами в кино, прогуляется по парку, поужинает с вами.
+               Здесь каждый продаёт своё время и указывает, как оно может быть использовано.
+               Заработав деньги, можно купить чужое время, или снять их.
+           </h4></p>
+        
+    </div>
+    <div id="Cloud" class=" col-xs-1 col-md-2 col-lg-3" style="background-color: #0d747c; width: 300px; height: 300px;">
+        <ul>
+            @foreach (string tag in ViewBag.Tags)
+            {
+                <li>@Html.ActionLink(tag, "Search", "Home", new { tag = tag }, null)</li>
+            }
+        </ul>
+    </div> 
+</div>
+
+

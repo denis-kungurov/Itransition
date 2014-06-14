@@ -1,0 +1,73 @@
+﻿@model MvcApplication4.Models.Ad
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 style="font-size: 35px">Create</h2>
+
+@using (Html.BeginForm("", "Ad/Create", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <form class="form-horizontal">
+        <fieldset>
+            <legend>Ad</legend>
+            <div class="row">
+                <div>
+                    @Html.LabelFor(model => model.Title, new { @class = "control-label col-xs-offset-2 col-lg-1 col-md-1 col-xs-1", @style = "margin-top: 12px; margin-bottom: 12px"})
+                </div>
+                <div class="editor-label">
+                    @Html.TextBoxFor(model => model.Title, new { @class = "form-title-create col-xs-offset-1 col-md-offset-0 col-lg-offset-0 col-lg-6 col-md-6 col-xs-6" })
+                    @Html.ValidationMessageFor(model => model.Title)
+                </div>
+            </div>
+            <div class="row">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Info, new { @class = "control-label col-xs-offset-2 col-lg-1 col-md-1 col-xs-1", @style = "margin-top: 12px; margin-bottom: 12px" })
+                </div>
+                <div class="editor-field">
+                    @Html.TextAreaFor(model => model.Info, new { @class = "form-info-create col-xs-offset-1 col-md-offset-0 col-lg-offset-0 col-lg-6 col-md-6 col-xs-6" })
+                    @Html.ValidationMessageFor(model => model.Info)
+                </div>
+            </div>
+            <div class="row">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Price, new { @class = "control-label col-xs-offset-2 col-lg-1 col-md-1 col-xs-1", @style = "margin-top: 12px; margin-bottom: 12px" })
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.Price, new { @class = "form-price-create col-xs-offset-1 col-md-offset-0 col-lg-offset-0 col-lg-6 col-md-6 col-xs-6" })
+                    @Html.ValidationMessageFor(model => model.Price)
+                </div>
+            </div>
+            <div id="InputFiles" class="col-xs-offset-4 col-xs-4">
+                <input type="file" name="photos[0]" />
+                <button type="button" class="btn btn-success btn-block" onclick="addFile()" id="AddMore">Add file</button>
+            </div>
+        </fieldset>
+
+        <br/>
+        <div class="row">
+            <button type="submit" class="btn btn-danger col-xs-offset-3 col-xs-6" >Create</button>
+        </div>
+    </form>
+}
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+<script type="text/javascript">
+    window.i = 1;
+    function addFile() {
+        $('#InputFiles button#AddMore').before('<input type="file" name="photos[window.i]" />');
+        i++;
+        if (i > 3) {
+        $('#AddMore').replaceWith('<button type="button" class="btn btn-primary disabled col-xs-offset-3 col-xs-6" id="AddMore">maximum photo</button>');
+        }
+        
+    }
+</script>
+
