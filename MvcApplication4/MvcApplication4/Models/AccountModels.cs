@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Globalization;
+using System.Security;
 using System.Web.Security;
 
 namespace MvcApplication4.Models
@@ -16,6 +17,9 @@ namespace MvcApplication4.Models
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<Ad> Ads { get; set; }
+        public DbSet<Photo> Photos { get; set; }
+        public DbSet<PostRate> PostRates { get; set; }
     }
 
     [Table("UserProfile")]

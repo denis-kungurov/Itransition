@@ -8,16 +8,6 @@ using System.Web;
 
 namespace MvcApplication4.Models
 {
-    public class PostRateContext : DbContext
-    {
-        public PostRateContext()
-            : base("DefaultConnection")
-        {
-        }
-
-        public DbSet<PostRate> PostRates { get; set; }
-    }
-
     public class PostRate
     {
         [Key]

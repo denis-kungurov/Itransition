@@ -8,16 +8,6 @@ using System.Web;
 
 namespace MvcApplication4.Models
 {
-    public class AdContext : DbContext
-    {
-        public AdContext()
-            : base("DefaultConnection")
-        {
-        }
-
-        public DbSet<Ad> Ads { get; set; }
-    }
-
     public class Ad
     {
         [Key]

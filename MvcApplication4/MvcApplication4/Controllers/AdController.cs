@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 using MvcApplication4.Models;
 
 namespace MvcApplication4.Controllers
@@ -49,7 +50,11 @@ namespace MvcApplication4.Controllers
             Ad newAd;
             using (var userContext = new UsersContext())
             {
-                userProfile = userContext.UserProfiles.First(s => s.UserName == User.Identity.Name);
+                userProfile = userContext.UserProfiles.FirstOrDefault(s => s.UserName == User.Identity.Name);
+                if (userProfile == null)
+                {
+                    return RedirectToAction("Login","Account");
+                }
                 newAd = new Ad
                 {
                     Title = ad.Title,
@@ -61,10 +66,8 @@ namespace MvcApplication4.Controllers
                 userProfile.Ads.Add(newAd);
                 userContext.UserProfiles.AddOrUpdate(userProfile);
                 userContext.SaveChanges();
-            }
-            using (var adContext = new AdContext())
-            {
-                newAd = adContext.Ads.First(x => x.Id == newAd.Id);
+
+                newAd = userContext.Ads.First(x => x.Id == newAd.Id);
 
                 newAd.Photos = new List<Photo>();
                 foreach (var photo in photos)
@@ -80,8 +83,8 @@ namespace MvcApplication4.Controllers
                     });
                     photo.SaveAs(Path.Combine(path, photo.FileName));
                 }
-                adContext.Ads.AddOrUpdate(newAd);
-                adContext.SaveChanges();
+                userContext.Ads.AddOrUpdate(newAd);
+                userContext.SaveChanges();
             }
             return RedirectToAction("Index");
         }

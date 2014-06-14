@@ -9,16 +9,6 @@ using System.Web;
 
 namespace MvcApplication4.Models
 {
-    public class PhotoContext : DbContext
-    {
-        public PhotoContext()
-            : base("DefaultConnection")
-        {
-        }
-
-        public DbSet<Photo> Photos { get; set; }
-    }
-
     public class Photo
     {
         [Key]
