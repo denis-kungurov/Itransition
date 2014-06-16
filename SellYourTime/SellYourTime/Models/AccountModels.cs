@@ -16,6 +16,8 @@ namespace SellYourTime.Models
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<Offer> Offers { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 
     [Table("UserProfile")]
@@ -23,8 +25,51 @@ namespace SellYourTime.Models
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int UserId { get; set; }
-        public string UserName { get; set; }
+        public virtual int UserId { get; set; }
+
+        public virtual string UserName { get; set; }
+        public virtual string Email { get; set; }
+        public virtual string ContactData { get; set; }
+        public virtual ICollection<Offer> Offers { get; set; }
+        public virtual ICollection<Offer> Orders { get; set; }
+        public virtual ICollection<UserProfile> LikedUsers { get; set; }
+        public virtual ICollection<UserProfile> DislikedUsers { get; set; }
+        public virtual double? Rating { get; set; }
+}
+
+    public class Offer
+    {
+        [Key]
+        public virtual int Id { get; set; }
+        public virtual string Title { get; set; }
+        public virtual ICollection<Tag> Tags { get; set; }
+        public virtual string Description { get; set; }
+        public virtual int? Price { get; set; }
+        public virtual string FirstPhotoPath { get; set; }
+        public virtual string SecondPhotoPath { get; set; }
+        public virtual string ThirdPhotoPath { get; set; }
+        public virtual DateTime DateAdded { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual UserProfile User { get; set; }
+        public virtual int? SumRating { get; set; }
+        public virtual int? NumberOfRate { get; set; }
+    }
+
+    public class Comment
+    {
+        [Key]
+        public virtual int Id { get; set; }
+        public virtual Offer Offer { get; set; }
+        public virtual UserProfile User { get; set; }
+        public virtual String Message { get; set; }
+    }
+
+    public class Tag
+    {
+        [Key]
+        public virtual int Id { get; set; }
+        public virtual string Value { get; set; }
+        public virtual ICollection<Offer> Offers { get; set; } 
     }
 
     public class RegisterExternalLoginModel

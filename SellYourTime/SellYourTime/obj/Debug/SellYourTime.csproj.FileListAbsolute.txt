@@ -84,3 +84,7 @@ D:\GIT\Itransition\SellYourTime\SellYourTime\bin\zh-Hant\System.Spatial.resource
 D:\GIT\Itransition\SellYourTime\SellYourTime\obj\Debug\SellYourTime.csprojResolveAssemblyReference.cache
 D:\GIT\Itransition\SellYourTime\SellYourTime\obj\Debug\SellYourTime.dll
 D:\GIT\Itransition\SellYourTime\SellYourTime\obj\Debug\SellYourTime.pdb
+D:\GIT\Itransition\SellYourTime\SellYourTime\bin\ICSharpCode.SharpZipLib.dll
+D:\GIT\Itransition\SellYourTime\SellYourTime\bin\Lucene.Net.dll
+D:\GIT\Itransition\SellYourTime\SellYourTime\bin\Lucene.Net.pdb
+D:\GIT\Itransition\SellYourTime\SellYourTime\bin\Lucene.Net.xml
