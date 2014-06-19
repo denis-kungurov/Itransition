@@ -80,3 +80,6 @@ D:\GIT\Itransition\SellYourTime\SellYourTime.Tests\bin\Debug\zh-Hant\System.Spat
 D:\GIT\Itransition\SellYourTime\SellYourTime.Tests\obj\Debug\SellYourTime.Tests.csprojResolveAssemblyReference.cache
 D:\GIT\Itransition\SellYourTime\SellYourTime.Tests\obj\Debug\SellYourTime.Tests.dll
 D:\GIT\Itransition\SellYourTime\SellYourTime.Tests\obj\Debug\SellYourTime.Tests.pdb
+D:\GIT\Itransition\SellYourTime\SellYourTime.Tests\bin\Debug\Lucene.Net.dll
+D:\GIT\Itransition\SellYourTime\SellYourTime.Tests\bin\Debug\Lucene.Net.pdb
+D:\GIT\Itransition\SellYourTime\SellYourTime.Tests\bin\Debug\Lucene.Net.xml

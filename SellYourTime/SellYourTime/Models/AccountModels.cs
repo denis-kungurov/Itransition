@@ -17,6 +17,7 @@ namespace SellYourTime.Models
 
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Offer> Offers { get; set; }
+        public DbSet<Tag> Tags { get; set; }
         public DbSet<Comment> Comments { get; set; }
     }
 
@@ -139,4 +140,5 @@ namespace SellYourTime.Models
         public string ProviderDisplayName { get; set; }
         public string ProviderUserId { get; set; }
     }
+
 }
