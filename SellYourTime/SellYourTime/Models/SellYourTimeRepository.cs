@@ -30,13 +30,17 @@ namespace SellYourTime.Models
             return _db.UserProfiles.FirstOrDefault(u => u.UserName == name);
         }
 
-        public void AddOffer(Offer offer, String name)
+        public void AddOffer(Offer offer, String name, string tg)
         {
             offer.DateAdded = DateTime.Now;
+            offer.Tags = new List<Tag>();
+            var tag = new Tag();
+            tag.Value = tg;
             var user = FindUserByName(name);
             if (user != null)
             {
                 offer.User = user;
+                offer.Tags.Add(tag);
                 _db.Offers.Add(offer);
                 _db.SaveChanges();
             }

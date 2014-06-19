@@ -1,7 +1,6 @@
 ﻿@model SellYourTime.Models.UploadPhotoModel
 @{
     ViewBag.Title = "Create";
-    var tag = ViewBag.Tag;
 }
 <div class="col-xs-4 col-xs-offset-4">
     <form class="form-horizontal" method="POST" action="@Url.Action("Index")" enctype="multipart/form-data">
@@ -14,9 +13,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="Value" class="col-lg-2 control-label">Tag</label>
+                <label for="tg" class="col-lg-2 control-label">Tag</label>
                 <div class="col-lg-10">
-                    <input type="text" class="form-control" name="Value" id="Value" placeholder="Tag" required />
+                    <input type="text" class="form-control" name="tg" id="tg" placeholder="Tag" required />
                 </div>
             </div>
             <div class="form-group">

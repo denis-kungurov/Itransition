@@ -14,12 +14,13 @@ namespace SellYourTime.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Tag = new Tag();
             return View();
         }
 
         [HttpPost]
         [Authorize]
-        public ActionResult Index(Offer offer, UploadPhotoModel photo)
+        public ActionResult Index(Offer offer, UploadPhotoModel photo, string tg)
         {
             if (photo.FirstPostedFile != null)
             {
@@ -48,7 +49,7 @@ namespace SellYourTime.Controllers
                 photo.ThirdPostedFile.SaveAs(path);
                 offer.ThirdPhotoPath = "/Images/" + pic;
             }
-            _repo.AddOffer(offer, User.Identity.Name);
+            _repo.AddOffer(offer, User.Identity.Name,tg);
             return RedirectToAction("Index","Home");
         }
 
