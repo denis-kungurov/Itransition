@@ -25,6 +25,11 @@ namespace SellYourTime.Models
             return _db.Offers.ToList();
         }
 
+        public ICollection<Offer> GetLatestFiveOffers()
+        {
+            return _db.Offers.OrderBy(of => of.DateAdded).Take(5).ToList();
+        }
+
         public ICollection<Tag> GetAllTags()
         {
             return _db.Tags.ToList();
@@ -62,6 +67,7 @@ namespace SellYourTime.Models
                 offer.User = user;
                 offer.Tags.Add(tag);
                 _db.Offers.Add(offer);
+                user.Offers.Add(offer);
                 _db.SaveChanges();
             }
         }

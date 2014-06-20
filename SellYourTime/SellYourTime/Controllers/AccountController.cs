@@ -17,6 +17,7 @@ namespace SellYourTime.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+        private SellYourTimeRepository _repo = new SellYourTimeRepository();
         //
         // GET: /Account/Login
 
@@ -326,6 +327,11 @@ namespace SellYourTime.Controllers
 
             ViewBag.ShowRemoveButton = externalLogins.Count > 1 || OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             return PartialView("_RemoveExternalLoginsPartial", externalLogins);
+        }
+
+        public ActionResult Profile()
+        {
+            return View(_repo.FindUserByName(User.Identity.Name));
         }
 
         #region Helpers

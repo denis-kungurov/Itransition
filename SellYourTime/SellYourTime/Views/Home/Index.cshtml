@@ -29,17 +29,15 @@
         </ul>
     </div>
 </div>
-<div class="col-xs-6 col-lg-8 col-md-7" style="margin-left: 50px">
+<div class="col-xs-6" style="margin-left: 50px">
     <h2>Latest @Model.Count offers</h2>
     <table class="table table-striped table-hover ">
         <thead>
             <tr>
                 <td>Image</td>
                 <td>Title</td>
-                <td>Description</td>
                 <td>Price</td>
                 <td>Info</td>
-                <td>Tags</td>
             </tr>
         </thead>
         <tbody>
@@ -51,26 +49,10 @@
                     {
                                 <img src=@offer.FirstPhotoPath style="width: 36px; height: 36px" />
                     }
-                    @if (offer.SecondPhotoPath != null)
-                    {
-                                <img src=@offer.SecondPhotoPath style="width: 36px; height: 36px" />
-                    }
-                    @if (offer.ThirdPhotoPath != null)
-                    {
-                                <img src=@offer.ThirdPhotoPath style="width: 36px; height: 36px" />
-                    }
                     </td>
                     <td>@offer.Title</td>
-                    <td>@offer.Description</td>
                     <td>@offer.Price</td>
                     <td>Posted by @offer.User.UserName on @offer.DateAdded</td>
-
-                    <td>
-                    @foreach (Tag tag in offer.Tags)
-                    {
-                        @tag.Value;
-                    }
-                    </td>
                 </tr>
             }
         </tbody>

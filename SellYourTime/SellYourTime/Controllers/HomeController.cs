@@ -17,7 +17,7 @@ namespace SellYourTime.Controllers
             ViewBag.Message = "Вы можете продать встречу или купить встречу с другим человеком.";
             var tags = repo.GetAllTags();
             ViewBag.Tags = tags;
-            return View(repo.GetAllOffers());
+            return View(repo.GetLatestFiveOffers());
         }
 
         public ActionResult About()

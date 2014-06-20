@@ -332,6 +332,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Create\Index.cshtml" />
     <Content Include="Views\OfferPage\ShowPage.cshtml" />
+    <Content Include="Views\Account\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

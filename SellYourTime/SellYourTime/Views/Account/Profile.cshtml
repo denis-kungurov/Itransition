@@ -1,0 +1,103 @@
+﻿@using SellYourTime.Models
+@model SellYourTime.Models.UserProfile
+@{
+    ViewBag.Title = "Profile";
+}
+
+<div class="col-xs-offset-1 col-xs-6 panel panel-default">
+    <legend class="h1">Profile information</legend>
+    <div class="col-xs-12 row">
+        <h2 class="col-xs-3 text-right">Name:</h2>
+        <h3 class="col-xs-9">@Model.UserName</h3>
+    </div>
+    <div class="col-xs-12 row">
+        <h2 class="col-xs-3 text-right">Email:</h2>
+        @if (Model.Email != null)
+        {
+            <h3 class="col-xs-9">@Model.Email</h3>
+        }
+    </div>
+    <div class="col-xs-12 row">
+        <h2 class="col-xs-3 text-right">Contact Data:</h2>
+        @if (Model.ContactData != null)
+        {
+            <h3 class="col-xs-9">@Model.ContactData</h3>
+        }
+    </div>
+    <div class="col-xs-12 row">
+        <h2 class="col-xs-3 text-right">Rating:</h2>
+        @if (Model.ContactData != null)
+        {
+            <h3 class="col-xs-9">@Model.Rating</h3>
+        }
+    </div>
+    <br/>
+    <button type="button" class="btn btn-danger col-xs-3" style="margin-bottom: 10px" onclick="location.href='@Url.Action("Manage", "Account")'"><h4>Manage your account</h4></button>
+
+</div>
+<div class="col-xs-12 row">
+    @if (Model.Offers != null)
+    {
+        <div class="col-xs-offset-1 col-xs-5">
+            <h2>Profile Offers</h2>
+            <table class="table table-striped table-hover ">
+                <thead>
+                    <tr>
+                        <td>Image</td>
+                        <td>Title</td>
+                        <td>Price</td>
+                        <td>Info</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Offer offer in Model.Offers)
+                    {
+                        <tr onclick=" location.href = '@Url.Action("ShowPage", "OfferPage", new {id = offer.Id})' ">
+                            <td>
+                                @if (offer.FirstPhotoPath != null)
+                                {
+                                    <img src=@offer.FirstPhotoPath style="width: 36px; height: 36px" />
+                                }
+                            </td>
+                            <td>@offer.Title</td>
+                            <td>@offer.Price</td>
+                            <td>Posted by @offer.User.UserName on @offer.DateAdded</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    @if (Model.Orders != null)
+    {
+        <div class="col-xs-offset-1 col-xs-5">
+            <h2>Profile Orders</h2>
+            <table class="table table-striped table-hover ">
+                <thead>
+                    <tr>
+                        <td>Image</td>
+                        <td>Title</td>
+                        <td>Price</td>
+                        <td>Info</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Offer offer in Model.Orders)
+                    {
+                        <tr onclick=" location.href = '@Url.Action("ShowPage", "OfferPage", new {id = offer.Id})' ">
+                            <td>
+                                @if (offer.FirstPhotoPath != null)
+                                {
+                                    <img src=@offer.FirstPhotoPath style="width: 36px; height: 36px" />
+                                }
+                            </td>
+                            <td>@offer.Title</td>
+                            <td>@offer.Price</td>
+                            <td>Posted by @offer.User.UserName on @offer.DateAdded</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
