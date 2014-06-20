@@ -25,17 +25,37 @@ namespace SellYourTime.Models
             return _db.Offers.ToList();
         }
 
+        public ICollection<Tag> GetAllTags()
+        {
+            return _db.Tags.ToList();
+        } 
+
         public UserProfile FindUserByName(String name)
         {
             return _db.UserProfiles.FirstOrDefault(u => u.UserName == name);
+        }
+
+        public Tag FindTagByValue(String value)
+        {
+            return _db.Tags.FirstOrDefault(u => u.Value == value);
+        }
+
+        public Offer FindOfferById(int? id)
+        {
+            return _db.Offers.FirstOrDefault(u => u.Id == id);
         }
 
         public void AddOffer(Offer offer, String name, string tg)
         {
             offer.DateAdded = DateTime.Now;
             offer.Tags = new List<Tag>();
-            var tag = new Tag();
-            tag.Value = tg;
+            var tag = FindTagByValue(tg);
+            if (tag == null)
+            {
+                tag = new Tag();
+                tag.Value = tg;
+            }
+
             var user = FindUserByName(name);
             if (user != null)
             {

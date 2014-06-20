@@ -18,17 +18,11 @@
     </div>
     <div id="Cloud" class=" col-xs-1 col-md-2 col-lg-3" style="background-color: #0d747c; width: 300px; height: 300px;">
         <ul>
-            @if(Model != null)
+            @if (ViewBag.Tags != null)
             {
-                foreach (Offer offer in Model)
+                foreach (Tag tag in ViewBag.Tags)
                 {
-                    if(offer.Tags != null)
-                    { 
-                        foreach (Tag tag in offer.Tags)
-                        {
-                            <li>@Html.ActionLink(tag.Value, "Index", "Create", new {tag = tag}, null)</li>
-                        }
-                    }
+                    <li>@Html.ActionLink(tag.Value, "Index", "Create", new { tag = tag }, null)</li>
                 }
             }
 
@@ -45,33 +39,38 @@
                 <td>Description</td>
                 <td>Price</td>
                 <td>Info</td>
+                <td>Tags</td>
             </tr>
         </thead>
         <tbody>
             @foreach (Offer offer in Model)
             {
-                <tr>
-                    <td> @if (offer.FirstPhotoPath != null)
-                         {
-                             <img src=@offer.FirstPhotoPath style="width: 36px; height: 36px" />
-                         }
-                        @if (offer.SecondPhotoPath != null)
-                        {
-                            <img src=@offer.SecondPhotoPath style="width: 36px; height: 36px" />
-                        }
-                        @if (offer.ThirdPhotoPath != null)
-                        {
-                            <img src=@offer.ThirdPhotoPath style="width: 36px; height: 36px" />
-                        }
+                <tr onclick="location.href='@Url.Action("ShowPage","OfferPage", new { id = offer.Id})'">
+                    <td>
+                    @if (offer.FirstPhotoPath != null)
+                    {
+                                <img src=@offer.FirstPhotoPath style="width: 36px; height: 36px" />
+                    }
+                    @if (offer.SecondPhotoPath != null)
+                    {
+                                <img src=@offer.SecondPhotoPath style="width: 36px; height: 36px" />
+                    }
+                    @if (offer.ThirdPhotoPath != null)
+                    {
+                                <img src=@offer.ThirdPhotoPath style="width: 36px; height: 36px" />
+                    }
                     </td>
                     <td>@offer.Title</td>
                     <td>@offer.Description</td>
                     <td>@offer.Price</td>
                     <td>Posted by @offer.User.UserName on @offer.DateAdded</td>
-                    @*<li>@foreach(Tag tag in offer.Tags)
 
-
-            </li>*@
+                    <td>
+                    @foreach (Tag tag in offer.Tags)
+                    {
+                        @tag.Value;
+                    }
+                    </td>
                 </tr>
             }
         </tbody>

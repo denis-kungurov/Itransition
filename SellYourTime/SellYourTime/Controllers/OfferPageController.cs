@@ -13,17 +13,14 @@ namespace SellYourTime.Controllers
         //
         // GET: /OfferPage/
 
-        public ActionResult Index()
+        public ActionResult ShowPage(int? id)
         {
-            var of = new Offer();
-            of.Title = "TestTitle";
-            of.Description = "Возвращает HTML-элемент типа DropdownList для каждого свойства объекта, представленного с помощью конкретного выражения, в котором используется определенный список элементов";
-            of.Price = 213;
-            of.FirstPhotoPath = "/Images/1126330927.png";
-            var user = _repo.FindUserByName(User.Identity.Name);
-            of.User = user;
-            return View(of);
+            if(id == null)
+                return RedirectToAction("Index","Home");
+            else
+                return View(_repo.FindOfferById(id));
         }
+
 
     }
 }
