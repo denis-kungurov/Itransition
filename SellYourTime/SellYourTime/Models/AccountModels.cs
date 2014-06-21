@@ -63,6 +63,7 @@ namespace SellYourTime.Models
         public virtual Offer Offer { get; set; }
         public virtual UserProfile User { get; set; }
         public virtual String Message { get; set; }
+        public virtual DateTime DateAdded { get; set; }
     }
 
     public class Tag

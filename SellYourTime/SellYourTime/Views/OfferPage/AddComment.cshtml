@@ -1,0 +1,14 @@
+﻿@using SellYourTime.Models
+@model Comment
+
+<li class="list-group-item col-xs-12">
+    <div class="col-xs-2" style="border-right-style: solid; border-right-width: 1px; border-right-color: #0D747C">
+        @Model.User.UserName
+    </div>
+    <div class="col-xs-8" style="border-right-style: solid; border-right-width: 1px; border-right-color: #0D747C">
+        @Model.Message
+    </div>
+    <div class="col-xs-2">
+        @Model.DateAdded
+    </div>
+</li>

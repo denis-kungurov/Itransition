@@ -71,5 +71,17 @@ namespace SellYourTime.Models
                 _db.SaveChanges();
             }
         }
+
+        public Comment AddComment(String message, String userName, DateTime time, int offerId)
+        {
+            var comment = new Comment();
+            comment.User = FindUserByName(userName);
+            comment.Offer = FindOfferById(offerId);
+            comment.Message = message;
+            comment.DateAdded = time;
+            _db.Comments.Add(comment);
+            _db.SaveChanges();
+            return comment;
+        }
     }
 }

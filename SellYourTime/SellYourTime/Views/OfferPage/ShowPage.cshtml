@@ -13,13 +13,13 @@
         </div>
         <div class="col-xs-offset-3 col-xs-2">
             <h3 class="panel-title">
-                Created by: 
+                Created by:
                 @Model.User.UserName
-                </h3>
-            </div>
+            </h3>
+        </div>
         <div class="col-xs-3">
             <h3 class="panel-title">
-                <a>At:</a> 
+                <a>At:</a>
                 @Model.DateAdded
             </h3>
         </div>
@@ -27,15 +27,27 @@
     <div class="panel-body" style="margin-top: 50px">
         <div class="col-xs-12 row">
             <div id="MyCarousel" class="carousel slide col-xs-4" style="width: 50%; height: 50%" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#MyCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#MyCarousel" data-slide-to="1" class=""></li>
-                    <li data-target="#MyCarousel" data-slide-to="2" class=""></li>
-                </ol>
+                @if (ViewBag.CountOfPhoto >= 1)
+                {
+                    <ol class="carousel-indicators">
+                        <li data-target="#MyCarousel" data-slide-to="0" class="active"></li>
+                        @if (ViewBag.CountOfPhoto >= 2)
+                        {
+                            <li data-target="#MyCarousel" data-slide-to="1" class=""></li>
+                            if (ViewBag.CountOfPhoto >= 3)
+                            {
+                                <li data-target="#MyCarousel" data-slide-to="2" class=""></li>
+                            }
+                        }
+                    </ol>
+                }
                 <div class="carousel-inner">
-                    <div class="item active">
-                        <img src="@Model.FirstPhotoPath">
-                    </div>
+                    @if (@Model.FirstPhotoPath != null)
+                    {
+                        <div class="item active">
+                            <img src="@Model.FirstPhotoPath">
+                        </div>
+                    }
                     @if (@Model.SecondPhotoPath != null)
                     {
                         <div class="item">
@@ -79,6 +91,48 @@
             </div>
             <button type="button" class="btn btn-primary col-xs-offset-3 col-xs-4"> Buy </button>
         </div>
-
     </div>
 </div>
+<div class="panel panel-success col-xs-offset-1 col-xs-10" style="padding: 0; margin-top: 20px">
+    <legend class="h2">Comments</legend>
+    <div class="col-xs-12">
+        <ul class="list-group col-xs-12" id="commentsList">
+            @if (Model.Comments != null)
+            {
+                foreach (Comment comment in Model.Comments)
+                {
+                    <li class="list-group-item col-xs-12">
+                        <div class="col-xs-2" style="border-right-style: solid; border-right-width: 1px; border-right-color: #0D747C">
+                            @comment.User.UserName
+                        </div>
+                        <div class="col-xs-8" style="border-right-style: solid; border-right-width: 1px; border-right-color: #0D747C">
+                            @comment.Message
+                        </div>
+                        <div class="col-xs-2">
+                            @comment.DateAdded
+                        </div>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+    <h3 class="col-xs-offset-1 col-xs-11" style="margin-top: 10px">Create comment</h3>
+    <div class="col-xs-offset-1 col-xs-10" style="margin-bottom: 20px">
+        <textarea class="form-control col" rows="4" name="comment" id="comment" placeholder="Your comment"></textarea>
+        <button type="button" class="btn btn-primary" style="margin-top: 10px" onclick="AddComm()">Create comment</button>
+    </div>
+</div>
+<script type="text/javascript">
+    function AddComm() {
+        var value = document.getElementById("comment").value;
+        if (value == "") {
+            alert("You must write a comment");
+            return;
+        }
+        var comment = { message: value, offerId: @Model.Id };
+        $.post("/OfferPage/AddComment", comment, function(data) {
+            $('#commentsList').append(data);
+            //"<li class='list-group-item col-xs-12'><div class='col-xs-2' style='border-right-style: solid; border-right-width: 1px; border-right-color: #0D747C'>"+data.User.UserName+"</div><div class='col-xs-8' style='border-right-style: solid; border-right-width: 1px; border-right-color: #0D747C'>"+data.Message+"</div><div class='col-xs-2'>"+data.DateAdded+"</div></li>"
+        });
+    }
+</script>

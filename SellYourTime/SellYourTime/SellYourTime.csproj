@@ -333,6 +333,7 @@
     <Content Include="Views\Create\Index.cshtml" />
     <Content Include="Views\OfferPage\ShowPage.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\OfferPage\AddComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
