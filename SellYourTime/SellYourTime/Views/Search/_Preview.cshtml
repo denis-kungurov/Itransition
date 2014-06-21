@@ -1,0 +1,9 @@
+﻿@using SellYourTime.Models
+@model Offer
+
+<tr onclick="location.href='@Url.Action("ShowPage", "OfferPage", new {id = Model.Id})'">
+    <td>@Model.Title</td>
+    <td>@Model.Price</td>
+    <td>@Model.User.UserName</td>
+</tr>
+

@@ -192,6 +192,7 @@
     <Compile Include="Controllers\CreateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OfferPageController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -201,8 +202,8 @@
     <Compile Include="Models\SellYourTimeRepository.cs" />
     <Compile Include="Models\UploadPhotoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Search\LuceneRepository.cs" />
     <Compile Include="Search\LuceneSearch.cs" />
-    <Compile Include="Search\SampleData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -336,6 +337,8 @@
     <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\OfferPage\AddComment.cshtml" />
     <Content Include="Views\OfferPage\SuccessPage.cshtml" />
+    <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\Search\_Preview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

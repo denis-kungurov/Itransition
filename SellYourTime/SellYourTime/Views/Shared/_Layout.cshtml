@@ -29,8 +29,8 @@
                 <li><a href="/">Main</a></li>
                 <li><a href=@Url.Action("Index","Create")>Create</a></li>
             </ul>
-            <form class="navbar-form navbar-left">
-                <input type="text" class="form-control col-lg-8" placeholder="Search">
+            <form class="navbar-form navbar-left" action="@Url.Action("Search", "Search")">
+                <input type="text" name="searchQuery" id="tags" class="form-control col-lg-8" placeholder="Search">
             </form>
             @Html.Partial("_LoginPartial")
         </div>

@@ -4,6 +4,7 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Web;
 using System.Web.Services.Description;
+using SellYourTime.Search;
 
 namespace SellYourTime.Models
 {
@@ -23,6 +24,15 @@ namespace SellYourTime.Models
         public ICollection<Offer> GetAllOffers()
         {
             return _db.Offers.ToList();
+        }
+
+        public ICollection<Offer> GetOffersByTag(String tag)
+        {
+            var tg = _db.Tags.FirstOrDefault(t => t.Value == tag);
+            if (tg != null)
+                return tg.Offers.ToList();
+            else
+                return new List<Offer>();
         }
 
         public ICollection<Offer> GetLatestFiveOffers()
@@ -120,7 +130,10 @@ namespace SellYourTime.Models
             {
                 userOrder.Status = "Success";
             }
-            _db.SaveChanges();
+        }
+        public List<Offer> Search(string searchQuery)
+        {
+            return LuceneSearch.Search(searchQuery, null).ToList();
         }
     }
 }

@@ -22,7 +22,7 @@
             {
                 foreach (Tag tag in ViewBag.Tags)
                 {
-                    <li>@Html.ActionLink(tag.Value, "Index", "Create", new { tag = tag }, null)</li>
+                    <li>@Html.ActionLink(tag.Value, "Search", "Search", new { searchQuery = tag.Value, searchMethod = "tag" }, null)</li>
                 }
             }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MvcApplication4.Search;
+using SellYourTime.Search;
 using SellYourTime.Models;
 
 namespace SellYourTime.Controllers
@@ -13,7 +13,7 @@ namespace SellYourTime.Controllers
         SellYourTimeRepository repo = new SellYourTimeRepository();
         public ActionResult Index()
         {
-            LuceneSearch.AddUpdateLuceneIndex(SampleDataRepository.GetAll());
+            LuceneSearch.AddUpdateLuceneIndex(LuceneRepository.GetAll());
             ViewBag.Message = "Вы можете продать встречу или купить встречу с другим человеком.";
             var tags = repo.GetAllTags();
             ViewBag.Tags = tags;
