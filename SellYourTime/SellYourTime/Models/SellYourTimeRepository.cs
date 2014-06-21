@@ -50,6 +50,16 @@ namespace SellYourTime.Models
             return _db.Offers.FirstOrDefault(u => u.Id == id);
         }
 
+        public Order FindOrderById(int orderId)
+        {
+            return _db.Orders.FirstOrDefault(u => u.Id == orderId);
+        }
+
+        public UserProfile FindUserById(int userId)
+        {
+            return _db.UserProfiles.FirstOrDefault(u => u.UserId == userId);
+        }
+
         public void AddOffer(Offer offer, String name, string tg)
         {
             offer.DateAdded = DateTime.Now;
@@ -82,6 +92,35 @@ namespace SellYourTime.Models
             _db.Comments.Add(comment);
             _db.SaveChanges();
             return comment;
+        }
+
+        public void AddOrder(int id, String userName)
+        {
+            var offer = FindOfferById(id);
+            var user = FindUserByName(userName);
+            var order = new Order();
+            order.Buyer = user;
+            order.Seller = offer.User;
+            order.Offer = offer;
+            order.PurchaseDate = DateTime.Now;
+            order.Status = "Processed";
+            user.YourOrders.Add(order);
+            offer.User.BuyingFromYou.Add(order);
+            _db.Orders.Add(order);
+            _db.SaveChanges();
+        }
+
+        public void ConfirmBuying(int orderId, int userId)
+        {
+            var order = FindOrderById(orderId);
+            var user = FindUserById(userId);
+            user.BuyingFromYou.Remove(order);
+            var userOrder = order.Buyer.YourOrders.FirstOrDefault(u => u.Id == order.Id);
+            if (userOrder != null)
+            {
+                userOrder.Status = "Success";
+            }
+            _db.SaveChanges();
         }
     }
 }

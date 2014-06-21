@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Globalization;
 using System.Web.Security;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace SellYourTime.Models
 {
@@ -19,6 +20,7 @@ namespace SellYourTime.Models
         public DbSet<Offer> Offers { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Order> Orders { get; set; } 
     }
 
     [Table("UserProfile")]
@@ -32,7 +34,8 @@ namespace SellYourTime.Models
         public virtual string Email { get; set; }
         public virtual string ContactData { get; set; }
         public virtual ICollection<Offer> Offers { get; set; }
-        public virtual ICollection<Offer> Orders { get; set; }
+        public virtual ICollection<Order> YourOrders { get; set; }
+        public virtual ICollection<Order> BuyingFromYou { get; set; }
         public virtual ICollection<UserProfile> LikedUsers { get; set; }
         public virtual ICollection<UserProfile> DislikedUsers { get; set; }
         public virtual double? Rating { get; set; }
@@ -54,6 +57,17 @@ namespace SellYourTime.Models
         public virtual UserProfile User { get; set; }
         public virtual int? SumRating { get; set; }
         public virtual int? NumberOfRate { get; set; }
+    }
+
+    public class Order
+    {
+        [Key]
+        public virtual int Id { get; set; }
+        public virtual UserProfile Seller { get; set; }
+        public virtual UserProfile Buyer { get; set; }
+        public virtual Offer Offer { get; set; }
+        public virtual DateTime PurchaseDate { get; set; }
+        public virtual String Status { get; set; }
     }
 
     public class Comment

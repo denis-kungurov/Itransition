@@ -3,97 +3,117 @@
 @{
     ViewBag.Title = "Profile";
 }
+<div class="col-xs-12 row">
+    <div class="col-xs-offset-1 col-xs-5 panel panel-default">
+        <legend class="h1">Profile information</legend>
+        <div class="col-xs-12 row">
+            <h2 class="col-xs-3 text-right">Name:</h2>
+            <h3 class="col-xs-9">@Model.UserName</h3>
+        </div>
+        <div class="col-xs-12 row">
+            <h2 class="col-xs-3 text-right">Email:</h2>
+            @if (Model.Email != null)
+            {
+                <h3 class="col-xs-9">@Model.Email</h3>
+            }
+        </div>
+        <div class="col-xs-12 row">
+            <h2 class="col-xs-3 text-right">Contact Data:</h2>
+            @if (Model.ContactData != null)
+            {
+                <h3 class="col-xs-9">@Model.ContactData</h3>
+            }
+        </div>
+        <div class="col-xs-12 row">
+            <h2 class="col-xs-3 text-right">Rating:</h2>
+            @if (Model.ContactData != null)
+            {
+                <h3 class="col-xs-9">@Model.Rating</h3>
+            }
+        </div>
+        <br />
+        <button type="button" class="btn btn-danger col-xs-3" style="margin-bottom: 10px" onclick="location.href='@Url.Action("Manage", "Account")'"><h4>Manage your account</h4></button>
 
-<div class="col-xs-offset-1 col-xs-6 panel panel-default">
-    <legend class="h1">Profile information</legend>
-    <div class="col-xs-12 row">
-        <h2 class="col-xs-3 text-right">Name:</h2>
-        <h3 class="col-xs-9">@Model.UserName</h3>
     </div>
-    <div class="col-xs-12 row">
-        <h2 class="col-xs-3 text-right">Email:</h2>
-        @if (Model.Email != null)
+    <div class="col-xs-5" style="margin-left: 20px">
+        @if (Model.BuyingFromYou != null)
         {
-            <h3 class="col-xs-9">@Model.Email</h3>
-        }
-    </div>
-    <div class="col-xs-12 row">
-        <h2 class="col-xs-3 text-right">Contact Data:</h2>
-        @if (Model.ContactData != null)
-        {
-            <h3 class="col-xs-9">@Model.ContactData</h3>
-        }
-    </div>
-    <div class="col-xs-12 row">
-        <h2 class="col-xs-3 text-right">Rating:</h2>
-        @if (Model.ContactData != null)
-        {
-            <h3 class="col-xs-9">@Model.Rating</h3>
-        }
-    </div>
-    <br/>
-    <button type="button" class="btn btn-danger col-xs-3" style="margin-bottom: 10px" onclick="location.href='@Url.Action("Manage", "Account")'"><h4>Manage your account</h4></button>
+            <div class="col-xs-12">
+                <legend class="h2">Buying from Profile</legend>
+                <table class="table table-striped table-hover" id="BuyingTable">
+                    <thead>
+                        <tr>
+                            <td class="col-xs-4">Title</td>
+                            <td class="col-xs-2">Price</td>
+                            <td class="col-xs-4">Buyer (Purchase date)</td>
+                            <td class="col-xs-2">Сonfirmation of purchase</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Order order in Model.BuyingFromYou)
+                        {
+                            <tr>
+                                <td onclick="location.href='@Url.Action("ShowPage", "OfferPage", new { id = order.Offer.Id })'">@order.Offer.Title</td>
+                                <td onclick="location.href='@Url.Action("ShowPage", "OfferPage", new { id = order.Offer.Id })'">@order.Offer.Price</td>
+                                <td onclick="location.href='@Url.Action("ShowPage", "OfferPage", new { id = order.Offer.Id })'">@order.Buyer.UserName (@order.PurchaseDate)</td>
+                                <td><button type="button" class="btn btn-danger col-xs-offset-1" style="padding-top: 0; padding-bottom: 0" onclick="location.href='@Url.Action("ConfirmBuyind","Account", new { orderId = @order.Id, userId = @order.Seller.UserId})'"><h4>Confirm</h4></button></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
 
+            </div>
+        }
+    </div>
 </div>
+
 <div class="col-xs-12 row">
     @if (Model.Offers != null)
     {
-        <div class="col-xs-offset-1 col-xs-5">
+        <div class="col-xs-offset-1 col-xs-3">
             <h2>Profile Offers</h2>
             <table class="table table-striped table-hover ">
                 <thead>
                     <tr>
-                        <td>Image</td>
                         <td>Title</td>
                         <td>Price</td>
-                        <td>Info</td>
+                        <td>Seller</td>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (Offer offer in Model.Offers)
                     {
-                        <tr onclick=" location.href = '@Url.Action("ShowPage", "OfferPage", new {id = offer.Id})' ">
-                            <td>
-                                @if (offer.FirstPhotoPath != null)
-                                {
-                                    <img src=@offer.FirstPhotoPath style="width: 36px; height: 36px" />
-                                }
-                            </td>
+                        <tr onclick=" location.href='@Url.Action("ShowPage", "OfferPage", new {id = offer.Id})' ">
                             <td>@offer.Title</td>
                             <td>@offer.Price</td>
-                            <td>Posted by @offer.User.UserName on @offer.DateAdded</td>
+                            <td>@offer.User.UserName</td>
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
     }
-    @if (Model.Orders != null)
+    @if (Model.YourOrders != null)
     {
-        <div class="col-xs-offset-1 col-xs-5">
+        <div class="col-xs-offset-1 col-xs-3">
             <h2>Profile Orders</h2>
             <table class="table table-striped table-hover ">
                 <thead>
                     <tr>
-                        <td>Image</td>
                         <td>Title</td>
                         <td>Price</td>
-                        <td>Info</td>
+                        <td>Seller</td>
+                        <td>Status</td>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (Offer offer in Model.Orders)
+                    @foreach (Order order in Model.YourOrders)
                     {
-                        <tr onclick=" location.href = '@Url.Action("ShowPage", "OfferPage", new {id = offer.Id})' ">
-                            <td>
-                                @if (offer.FirstPhotoPath != null)
-                                {
-                                    <img src=@offer.FirstPhotoPath style="width: 36px; height: 36px" />
-                                }
-                            </td>
-                            <td>@offer.Title</td>
-                            <td>@offer.Price</td>
-                            <td>Posted by @offer.User.UserName on @offer.DateAdded</td>
+                        <tr onclick=" location.href='@Url.Action("ShowPage", "OfferPage", new { id = order.Offer.Id })' ">
+                            <td>@order.Offer.Title</td>
+                            <td>@order.Offer.Price</td>
+                            <td>@order.Seller.UserName</td>
+                            <td>@order.Status</td>
                         </tr>
                     }
                 </tbody>

@@ -331,7 +331,14 @@ namespace SellYourTime.Controllers
 
         public ActionResult Profile()
         {
-            return View(_repo.FindUserByName(User.Identity.Name));
+            var user = _repo.FindUserByName(User.Identity.Name);
+            return View(user);
+        }
+
+        public ActionResult ConfirmBuyind(int? orderId, int? userId)
+        {
+            _repo.ConfirmBuying((int)orderId, (int)userId);
+            return RedirectToAction("Profile");
         }
 
         #region Helpers

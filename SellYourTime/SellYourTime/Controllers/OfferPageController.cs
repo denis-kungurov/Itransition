@@ -26,9 +26,17 @@ namespace SellYourTime.Controllers
                 if (offer.SecondPhotoPath != null) i++;
                 if (offer.ThirdPhotoPath != null) i++;
                 ViewBag.CountOfPhoto = i;
-                return View(_repo.FindOfferById(id));
+                ViewBag.OfferId = offer.Id;
+                return View(offer);
             }
         }
+
+        public ActionResult SuccessPage(int? id)
+        {
+            _repo.AddOrder((int)id, User.Identity.Name);
+            return View();
+        }
+
         [HttpPost]
         public ActionResult AddComment(String message, int? offerId)
         {

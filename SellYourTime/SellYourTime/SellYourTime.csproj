@@ -46,6 +46,7 @@
       <HintPath>..\packages\Lucene.Net.3.0.3\lib\NET40\Lucene.Net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -334,6 +335,7 @@
     <Content Include="Views\OfferPage\ShowPage.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\OfferPage\AddComment.cshtml" />
+    <Content Include="Views\OfferPage\SuccessPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
