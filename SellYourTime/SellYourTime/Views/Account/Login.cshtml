@@ -5,43 +5,60 @@
 }
 
 <hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
+    <h1 class="col-xs-offset-1" style="margin-bottom: 20px">@ViewBag.Title</h1>
 </hgroup>
 
 <section id="loginForm">
-<h2>Use a local account to log in.</h2>
-@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+    <h2 class="col-xs-offset-1">Use a local account to log in</h2>
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>Log in Form</legend>
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-                @Html.ValidationMessageFor(m => m.Password)
-            </li>
-            <li>
-                @Html.CheckBoxFor(m => m.RememberMe)
-                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
-            </li>
-        </ol>
-        <input type="submit" value="Log in" />
-    </fieldset>
-    <p>
-        @Html.ActionLink("Register", "Register") if you don't have an account.
-    </p>
-}
+        <fieldset>
+            <div class="col-xs-12">
+                <legend class="col-xs-offset-2 col-xs-6"><span>Log in Form</span></legend>
+            </div>
+            <div class="col-xs-offset-2 col-xs-10">
+                <p class="col-xs-12">
+                    <div class="col-xs-2">
+                        @Html.LabelFor(m => m.UserName)
+                    </div>
+                    <div class="col-xs-4">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                    </div>
+                    <div class="col-xs-6">
+                        @Html.ValidationMessageFor(m => m.UserName)
+                    </div>
+                </p>
+                <p class="col-xs-12">
+                    <div class="col-xs-2">
+                        @Html.LabelFor(m => m.Password)
+                    </div>
+                    <div class="col-xs-4">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    </div>
+                    <div class="col-xs-6">
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                </p>
+                <p class="col-xs-12">
+                    <div class="col-xs-6">
+                        <div class="col-xs-1" style="margin-left: 20px; margin-top: 7px">
+                            @Html.CheckBoxFor(m => m.RememberMe, new { @class = "checkbox" })
+                        </div>
+                        <div class="col-xs-6">
+                            @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+                        </div>
+                    </div>
+                </p>
+                <p class="col-xs-12">
+                    <button class="btn btn-danger col-xs-3" style="margin-top: 15px" type="submit">Log in</button>
+                </p>
+                <p class="col-xs-12">
+                    @Html.ActionLink("Register", "Register") if you don't have an account.
+                </p>
+            </div>
+        </fieldset>
+    }
 </section>
-
-<section class="social" id="socialLoginForm">
-    <h2>Use another service to log in.</h2>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
-</section>
-

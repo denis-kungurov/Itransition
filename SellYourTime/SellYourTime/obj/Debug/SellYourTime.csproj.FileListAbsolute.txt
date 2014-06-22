@@ -88,3 +88,5 @@ D:\GIT\Itransition\SellYourTime\SellYourTime\bin\ICSharpCode.SharpZipLib.dll
 D:\GIT\Itransition\SellYourTime\SellYourTime\bin\Lucene.Net.dll
 D:\GIT\Itransition\SellYourTime\SellYourTime\bin\Lucene.Net.pdb
 D:\GIT\Itransition\SellYourTime\SellYourTime\bin\Lucene.Net.xml
+D:\GIT\Itransition\SellYourTime\SellYourTime\bin\EntityFramework.SqlServer.dll
+D:\GIT\Itransition\SellYourTime\SellYourTime\bin\EntityFramework.SqlServer.xml
