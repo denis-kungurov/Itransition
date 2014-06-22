@@ -80,7 +80,7 @@ namespace SellYourTime.Controllers
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new { Email = model.Email, ContactData = model.ContactData});
                     WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");
                 }
@@ -89,7 +89,6 @@ namespace SellYourTime.Controllers
                     ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
                 }
             }
-
             // If we got this far, something failed, redisplay form
             return View(model);
         }

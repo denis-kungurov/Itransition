@@ -1,33 +1,59 @@
-﻿@model SellYourTime.Models.UploadPhotoModel
-@{
-    ViewBag.Title = "Create";
-}
+﻿@using SellYourTime.Models
+@model SellYourTime.Models.UploadPhotoModel
 <div class="col-xs-4 col-xs-offset-4">
-    <form class="form-horizontal" method="POST" action="@Url.Action("Index")" enctype="multipart/form-data">
+    <form class="form-horizontal" method="POST" action="@Url.Action("Index", new { updOfferId = ViewBag.Offer.Id})" enctype="multipart/form-data">
         <fieldset>
             <legend>Create</legend>
             <div class="form-group">
                 <label for="Title" class="col-lg-2 control-label">Title</label>
                 <div class="col-lg-10">
-                    <input type="text" class="form-control" name="Title" id="Title" placeholder="Title" required />
+                    @if (ViewBag.Offer != null)
+                    {
+                        <input type="text" class="form-control" name="Title" id="Title" placeholder="Title" value="@ViewBag.Offer.Title" required />
+                    }
+                    else
+                    {
+                        <input type="text" class="form-control" name="Title" id="Title" placeholder="Title" required />
+                    }
                 </div>
             </div>
             <div class="form-group">
                 <label for="tg" class="col-lg-2 control-label">Tag</label>
                 <div class="col-lg-10">
-                    <input type="text" class="form-control" name="tg" id="tg" placeholder="Tag" required />
+                    @if (ViewBag.Offer != null)
+{
+    <input type="text" class="form-control" name="tg" id="tg" placeholder="Tag" value="@foreach (Tag tag in ViewBag.Offer.Tags) { @tag.Value  }" required>
+                    }
+                    else
+                    {
+                        <input type="text" class="form-control" name="tg" id="tg" placeholder="Tag" required />
+                    }
                 </div>
             </div>
             <div class="form-group">
                 <label for="Description" class="col-lg-2 control-label">Description</label>
                 <div class="col-lg-10">
-                    <textarea class="form-control" rows="3" id="Description" name="Description" placeholder="Description"></textarea>
+                    @if (ViewBag.Offer != null)
+                    {
+                        <textarea class="form-control" rows="3" id="Description" name="Description" placeholder="Description">@ViewBag.Offer.Description</textarea>
+                    }
+                    else
+                    {
+                        <textarea class="form-control" rows="3" id="Description" name="Description" placeholder="Description"></textarea>
+                    }
                 </div>
             </div>
             <div class="form-group">
                 <label for="Price" class="col-lg-2 control-label">Price</label>
                 <div class="col-lg-10">
-                    <input type="number" class="form-control" name="Price" id="Price" placeholder="Price" required>
+                    @if (ViewBag.Offer != null)
+                    {
+                        <input type="number" class="form-control" name="Price" id="Price" placeholder="Price" value="@ViewBag.Offer.Price" required>
+                    }
+                    else
+                    {
+                        <input type="number" class="form-control" name="Price" id="Price" placeholder="Price" required>
+                    }
                 </div>
             </div>
             <div class="form-group" id="InputFiles">

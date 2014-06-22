@@ -16,7 +16,7 @@ namespace SellYourTime.Models
             _db = new UsersContext();
         }
 
-        public ICollection<UserProfile> GetAllUsers ()
+        public ICollection<UserProfile> GetAllUsers()
         {
             return _db.UserProfiles.ToList();
         }
@@ -48,7 +48,7 @@ namespace SellYourTime.Models
         public ICollection<Tag> GetTenMostPopularTags()
         {
             return _db.Tags.OrderByDescending(t => t.Offers.Count).Take(10).ToList();
-        }  
+        }
 
         public UserProfile FindUserByName(String name)
         {
@@ -97,6 +97,40 @@ namespace SellYourTime.Models
             }
         }
 
+        public void UpdateOffer(int updOfferId, Offer offer, String name, string tg)
+        {
+            offer.Tags = new List<Tag>();
+            var tag = FindTagByValue(tg);
+            if (tag == null)
+            {
+                tag = new Tag();
+                tag.Value = tg;
+            }
+            offer.Tags.Add(tag);
+            var updOffer = FindOfferById(updOfferId);
+            updOffer.Title = offer.Title;
+            updOffer.Tags.Clear();
+            foreach (Tag newTag in offer.Tags)
+            {
+                updOffer.Tags.Add(newTag);
+            }
+            updOffer.Description = offer.Description;
+            updOffer.Price = offer.Price;
+            if (offer.FirstPhotoPath != null)
+            {
+                updOffer.FirstPhotoPath = offer.FirstPhotoPath;
+            }
+            if (offer.SecondPhotoPath != null)
+            {
+                updOffer.SecondPhotoPath = offer.SecondPhotoPath;
+            }
+            if (offer.ThirdPhotoPath != null)
+            {
+                updOffer.ThirdPhotoPath = offer.ThirdPhotoPath;
+            }
+            _db.SaveChanges();
+        }
+
         public Comment AddComment(String message, String userName, DateTime time, int offerId)
         {
             var comment = new Comment();
@@ -135,6 +169,7 @@ namespace SellYourTime.Models
             {
                 userOrder.Status = "Success";
             }
+            _db.SaveChanges();
         }
         public List<Offer> Search(string searchQuery)
         {
@@ -143,7 +178,9 @@ namespace SellYourTime.Models
 
         public void CancelBuying(UserProfile user)
         {
-            foreach (Order order in user.BuyingFromYou)
+            var buyingFromYou = user.BuyingFromYou.ToList();
+            var yourOrders = user.YourOrders.ToList();
+            foreach (Order order in buyingFromYou)
             {
                 var time = (DateTime.Now - order.PurchaseDate);
                 if (time >= TimeSpan.FromDays(1))
@@ -156,7 +193,7 @@ namespace SellYourTime.Models
                     }
                 }
             }
-            foreach (Order order in user.YourOrders)
+            foreach (Order order in yourOrders)
             {
                 var time = (DateTime.Now - order.PurchaseDate);
                 if (time >= TimeSpan.FromDays(1))
@@ -172,6 +209,7 @@ namespace SellYourTime.Models
                     }
                 }
             }
+            _db.SaveChanges();
         }
     }
 }

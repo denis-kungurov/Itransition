@@ -12,7 +12,7 @@
                 @Model.Title
             </h3>
         </div>
-        <div class="col-xs-offset-3 col-xs-2">
+        <div class="col-xs-offset-2 col-xs-2">
             <h3 class="panel-title">
                 Created by:
                 @Model.User.UserName
@@ -23,6 +23,12 @@
                 <a>At:</a>
                 @Model.DateAdded
             </h3>
+        </div>
+        <div class="col-xs-1">
+            @if (Model.User.UserName == User.Identity.Name)
+            {
+                <a type="button" class="btn btn-success" style="padding: 0" href="@Url.Action("Index","Create", new { offerId = Model.Id})"> Edit </a>
+            }
         </div>
     </div>
     <div class="panel-body" style="margin-top: 50px">
@@ -87,7 +93,7 @@
             <div class="col-xs-offset-1 col-xs-4 row">
                 <span class="label label-danger col-xs-12 row" style="font-size: 30px; width: 100%; padding: 0">
                     <div class="col-xs-4" style="padding-top: 5px; padding-bottom: 5px; font-size: 25px">Price:</div>
-                    <div class="col-xs-offset-1 col-xs-7" style="padding-top: 5px; padding-bottom: 5px; font-size: 25px" >@Model.Price</div>
+                    <span class="col-xs-offset-1 col-xs-7" style="height: 35px; margin-top: 5px">@Model.Price</span>
                 </span>
             </div>
             <a type="button" class="btn btn-primary col-xs-offset-3 col-xs-4" href="@Url.Action("SuccessPage","OfferPage", new { id = Model.Id})"> Buy </a>

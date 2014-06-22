@@ -12,15 +12,18 @@ namespace SellYourTime.Controllers
     {
         private SellYourTimeRepository _repo = new SellYourTimeRepository();
 
-        public ActionResult Index()
+        public ActionResult Index(int? offerId)
         {
             ViewBag.Tag = new Tag();
+            ViewBag.Title = "Create";
+            var offer = _repo.FindOfferById(offerId);
+            ViewBag.Offer = offer;
             return View();
         }
 
         [HttpPost]
         [Authorize]
-        public ActionResult Index(Offer offer, UploadPhotoModel photo, string tg)
+        public ActionResult Index(Offer offer, UploadPhotoModel photo, string tg, int? updOfferId)
         {
             if (photo.FirstPostedFile != null)
             {
@@ -49,7 +52,14 @@ namespace SellYourTime.Controllers
                 photo.ThirdPostedFile.SaveAs(path);
                 offer.ThirdPhotoPath = "/Images/" + pic;
             }
-            _repo.AddOffer(offer, User.Identity.Name,tg);
+            if (updOfferId != null)
+            {
+                _repo.UpdateOffer((int)updOfferId, offer, User.Identity.Name, tg);
+            }
+            else
+            {
+                _repo.AddOffer(offer, User.Identity.Name, tg);
+            }
             return RedirectToAction("Index","Home");
         }
 

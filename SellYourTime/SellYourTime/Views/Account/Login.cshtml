@@ -12,8 +12,8 @@
     <h2 class="col-xs-offset-1">Use a local account to log in</h2>
     @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
     {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
+        <div class="col-xs-offset-1"> @Html.AntiForgeryToken() </div>
+        <div class="col-xs-offset-1"> @Html.ValidationSummary(true)</div>
 
         <fieldset>
             <div class="col-xs-12">
