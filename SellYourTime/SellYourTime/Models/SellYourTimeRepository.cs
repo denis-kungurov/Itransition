@@ -37,13 +37,18 @@ namespace SellYourTime.Models
 
         public ICollection<Offer> GetLatestFiveOffers()
         {
-            return _db.Offers.OrderBy(of => of.DateAdded).Take(5).ToList();
+            return _db.Offers.OrderByDescending(of => of.DateAdded).Take(5).ToList();
         }
 
         public ICollection<Tag> GetAllTags()
         {
             return _db.Tags.ToList();
-        } 
+        }
+
+        public ICollection<Tag> GetTenMostPopularTags()
+        {
+            return _db.Tags.OrderByDescending(t => t.Offers.Count).Take(10).ToList();
+        }  
 
         public UserProfile FindUserByName(String name)
         {
@@ -134,6 +139,39 @@ namespace SellYourTime.Models
         public List<Offer> Search(string searchQuery)
         {
             return LuceneSearch.Search(searchQuery, null).ToList();
+        }
+
+        public void CancelBuying(UserProfile user)
+        {
+            foreach (Order order in user.BuyingFromYou)
+            {
+                var time = (DateTime.Now - order.PurchaseDate);
+                if (time >= TimeSpan.FromDays(1))
+                {
+                    user.BuyingFromYou.Remove(order);
+                    var userOrder = order.Buyer.YourOrders.FirstOrDefault(u => u.Id == order.Id);
+                    if (userOrder != null)
+                    {
+                        userOrder.Status = "Fail";
+                    }
+                }
+            }
+            foreach (Order order in user.YourOrders)
+            {
+                var time = (DateTime.Now - order.PurchaseDate);
+                if (time >= TimeSpan.FromDays(1))
+                {
+                    if (order.Status == "Processed")
+                    {
+                        order.Status = "Fail";
+                        var userOrder = order.Seller.BuyingFromYou.FirstOrDefault(u => u.Id == order.Id);
+                        if (userOrder != null)
+                        {
+                            user.BuyingFromYou.Remove(order);
+                        }
+                    }
+                }
+            }
         }
     }
 }

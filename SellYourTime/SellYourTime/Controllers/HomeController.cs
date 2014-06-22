@@ -15,7 +15,7 @@ namespace SellYourTime.Controllers
         {
             LuceneSearch.AddUpdateLuceneIndex(LuceneRepository.GetAll());
             ViewBag.Message = "Вы можете продать встречу или купить встречу с другим человеком.";
-            var tags = repo.GetAllTags();
+            var tags = repo.GetTenMostPopularTags();
             ViewBag.Tags = tags;
             return View(repo.GetLatestFiveOffers());
         }

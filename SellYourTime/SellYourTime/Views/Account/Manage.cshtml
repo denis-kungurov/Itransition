@@ -3,13 +3,13 @@
     ViewBag.Title = "Manage Account";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
+<hgroup class="title col-xs-offset-1">
+    <h1>@ViewBag.Title</h1>
 </hgroup>
 
 <p class="message-success">@ViewBag.StatusMessage</p>
 
-<p>You're logged in as <strong>@User.Identity.Name</strong>.</p>
+<p class="col-xs-offset-1">You're logged in as <strong>@User.Identity.Name</strong>.</p>
 
 @if (ViewBag.HasLocalPassword)
 {

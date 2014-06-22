@@ -332,6 +332,7 @@ namespace SellYourTime.Controllers
         public ActionResult Profile()
         {
             var user = _repo.FindUserByName(User.Identity.Name);
+            _repo.CancelBuying(user);
             return View(user);
         }
 
