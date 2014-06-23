@@ -61,9 +61,9 @@ namespace SellYourTime.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddRate(double? value, int? offerId)
+        public ActionResult AddRate(int? value, int? offerId)
         {
-            var rating = _repo.AddRate((double)value, User.Identity.Name, (int)offerId);
+            var rating = _repo.AddRate((int)value, User.Identity.Name, (int)offerId);
             return PartialView(rating);
         }
     }

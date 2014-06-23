@@ -20,7 +20,8 @@ namespace SellYourTime.Models
         public DbSet<Offer> Offers { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<Order> Orders { get; set; } 
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Rate> Rates { get; set; } 
     }
 
     [Table("UserProfile")]
@@ -38,7 +39,6 @@ namespace SellYourTime.Models
         public virtual ICollection<Order> BuyingFromYou { get; set; }
         public virtual ICollection<UserProfile> LikedUsers { get; set; }
         public virtual ICollection<UserProfile> DislikedUsers { get; set; }
-        public virtual ICollection<Offer> RatedOffers { get; set; } 
         public virtual double? Rating { get; set; }
 }
 
@@ -56,9 +56,9 @@ namespace SellYourTime.Models
         public virtual DateTime DateAdded { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual UserProfile User { get; set; }
-        public virtual double? SumRating { get; set; }
         public virtual double? Rating { get; set; }
-        public virtual int? NumberKudoedUser { get; set; } 
+        public virtual int? SumRating { get; set; }
+        public virtual ICollection<Rate> Rates { get; set; } 
     }
 
     public class Order
@@ -70,6 +70,15 @@ namespace SellYourTime.Models
         public virtual Offer Offer { get; set; }
         public virtual DateTime PurchaseDate { get; set; }
         public virtual String Status { get; set; }
+    }
+
+    public class Rate
+    {
+        [Key]
+        public virtual int Id { get; set; }
+        public virtual int? Value { get; set; }
+        public virtual UserProfile User { get; set; }
+        public virtual Offer Offer { get; set; }
     }
 
     public class Comment

@@ -80,11 +80,13 @@ namespace SellYourTime.Models
             return _db.UserProfiles.FirstOrDefault(u => u.UserId == userId);
         }
 
+
         public bool IsUserKudoed(string userName, int offerId)
         {
+            var offer = FindOfferById(offerId);
             var user = FindUserByName(userName);
-            var offer = user.RatedOffers.FirstOrDefault(o => o.Id == offerId);
-            if (offer != null)
+            var rates = offer.Rates.Where(o => o.User.UserId == user.UserId).ToList();
+            if (rates.Count != 0)
             {
                 return true;
             }
@@ -159,24 +161,17 @@ namespace SellYourTime.Models
             return comment;
         }
 
-        public double AddRate(double value, String userName, int offerId)
+        public double AddRate(int value, String userName, int offerId)
         {
             var offer = FindOfferById(offerId);
-            if (offer.SumRating == null)
-            {
-                offer.SumRating = 0;
-            }
-            offer.SumRating += value;
             var user = FindUserByName(userName);
-            if (offer.NumberKudoedUser == null)
-            {
-                offer.NumberKudoedUser = 0;
-            }
-            offer.NumberKudoedUser += 1;
-            offer.Rating = Math.Round((double)(offer.SumRating/offer.NumberKudoedUser),1);
-            user.RatedOffers.Add(offer);
+            var rate = new Rate();
+            rate.Offer = offer;
+            rate.User = user;
+            rate.Value = value;
+            _db.Rates.Add(rate);
             _db.SaveChanges();
-            return (double)(offer.SumRating / offer.NumberKudoedUser);
+            return (double)(offer.SumRating / offer.Rates.Count);
         }
 
         public void AddOrder(int id, String userName)
