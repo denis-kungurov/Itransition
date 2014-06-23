@@ -10,14 +10,15 @@ namespace SellYourTime.Controllers
 {
     public class HomeController : Controller
     {
-        SellYourTimeRepository repo = new SellYourTimeRepository();
+        SellYourTimeRepository _repo = new SellYourTimeRepository();
         public ActionResult Index()
         {
             LuceneSearch.AddUpdateLuceneIndex(LuceneRepository.GetAll());
             ViewBag.Message = "Вы можете продать встречу или купить встречу с другим человеком.";
-            var tags = repo.GetTenMostPopularTags();
+            var tags = _repo.GetTenMostPopularTags();
             ViewBag.Tags = tags;
-            return View(repo.GetLatestFiveOffers());
+            ViewBag.TopOffers = _repo.GetTopOffers();
+            return View(_repo.GetLatestFiveOffers());
         }
 
         public ActionResult About()

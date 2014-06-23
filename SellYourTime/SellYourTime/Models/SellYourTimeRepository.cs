@@ -50,6 +50,11 @@ namespace SellYourTime.Models
             return _db.Tags.OrderByDescending(t => t.Offers.Count).Take(10).ToList();
         }
 
+        public ICollection<Offer> GetTopOffers()
+        {
+            return _db.Offers.OrderByDescending(o => o.Rating).Take(5).ToList();
+        }
+
         public UserProfile FindUserByName(String name)
         {
             return _db.UserProfiles.FirstOrDefault(u => u.UserName == name);
@@ -73,6 +78,17 @@ namespace SellYourTime.Models
         public UserProfile FindUserById(int userId)
         {
             return _db.UserProfiles.FirstOrDefault(u => u.UserId == userId);
+        }
+
+        public bool IsUserKudoed(string userName, int offerId)
+        {
+            var user = FindUserByName(userName);
+            var offer = user.RatedOffers.FirstOrDefault(o => o.Id == offerId);
+            if (offer != null)
+            {
+                return true;
+            }
+            return false;
         }
 
         public void AddOffer(Offer offer, String name, string tg)
@@ -143,6 +159,26 @@ namespace SellYourTime.Models
             return comment;
         }
 
+        public double AddRate(double value, String userName, int offerId)
+        {
+            var offer = FindOfferById(offerId);
+            if (offer.SumRating == null)
+            {
+                offer.SumRating = 0;
+            }
+            offer.SumRating += value;
+            var user = FindUserByName(userName);
+            if (offer.NumberKudoedUser == null)
+            {
+                offer.NumberKudoedUser = 0;
+            }
+            offer.NumberKudoedUser += 1;
+            offer.Rating = Math.Round((double)(offer.SumRating/offer.NumberKudoedUser),1);
+            user.RatedOffers.Add(offer);
+            _db.SaveChanges();
+            return (double)(offer.SumRating / offer.NumberKudoedUser);
+        }
+
         public void AddOrder(int id, String userName)
         {
             var offer = FindOfferById(id);
@@ -171,6 +207,7 @@ namespace SellYourTime.Models
             }
             _db.SaveChanges();
         }
+
         public List<Offer> Search(string searchQuery)
         {
             return LuceneSearch.Search(searchQuery, null).ToList();

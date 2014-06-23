@@ -18,6 +18,14 @@ namespace SellYourTime.Controllers
             ViewBag.Title = "Create";
             var offer = _repo.FindOfferById(offerId);
             ViewBag.Offer = offer;
+            if (offer == null)
+            {
+                ViewBag.OfferId = null;
+            }
+            else
+            {
+                ViewBag.OfferId = offer.Id;
+            }
             return View();
         }
 

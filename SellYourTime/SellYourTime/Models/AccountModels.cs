@@ -38,6 +38,7 @@ namespace SellYourTime.Models
         public virtual ICollection<Order> BuyingFromYou { get; set; }
         public virtual ICollection<UserProfile> LikedUsers { get; set; }
         public virtual ICollection<UserProfile> DislikedUsers { get; set; }
+        public virtual ICollection<Offer> RatedOffers { get; set; } 
         public virtual double? Rating { get; set; }
 }
 
@@ -55,8 +56,9 @@ namespace SellYourTime.Models
         public virtual DateTime DateAdded { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual UserProfile User { get; set; }
-        public virtual int? SumRating { get; set; }
-        public virtual int? NumberOfRate { get; set; }
+        public virtual double? SumRating { get; set; }
+        public virtual double? Rating { get; set; }
+        public virtual int? NumberKudoedUser { get; set; } 
     }
 
     public class Order

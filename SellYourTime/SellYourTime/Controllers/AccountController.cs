@@ -328,7 +328,7 @@ namespace SellYourTime.Controllers
             return PartialView("_RemoveExternalLoginsPartial", externalLogins);
         }
 
-        public ActionResult Profile()
+        public ActionResult ProfilePage()
         {
             var user = _repo.FindUserByName(User.Identity.Name);
             _repo.CancelBuying(user);
@@ -338,7 +338,7 @@ namespace SellYourTime.Controllers
         public ActionResult ConfirmBuyind(int? orderId, int? userId)
         {
             _repo.ConfirmBuying((int)orderId, (int)userId);
-            return RedirectToAction("Profile");
+            return RedirectToAction("ProfilePage");
         }
 
         #region Helpers

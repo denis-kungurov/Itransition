@@ -27,6 +27,22 @@ namespace SellYourTime.Controllers
                 if (offer.ThirdPhotoPath != null) i++;
                 ViewBag.CountOfPhoto = i;
                 ViewBag.OfferId = offer.Id;
+                var user = _repo.FindUserByName(User.Identity.Name);
+                if (user != null)
+                {
+                    if (_repo.IsUserKudoed(user.UserName, offer.Id))
+                    {
+                        ViewBag.CurrentUser = 1;
+                    }
+                    else
+                    {
+                        ViewBag.CurrentUser = 2;
+                    }
+                }
+                else
+                {
+                    ViewBag.CurrentUser = null;
+                }
                 return View(offer);
             }
         }
@@ -34,7 +50,7 @@ namespace SellYourTime.Controllers
         public ActionResult SuccessPage(int? id)
         {
             _repo.AddOrder((int)id, User.Identity.Name);
-            return View();
+            return View(_repo.FindOfferById((int)id));
         }
 
         [HttpPost]
@@ -42,6 +58,13 @@ namespace SellYourTime.Controllers
         {
             var comment = _repo.AddComment(message, User.Identity.Name, DateTime.Now,(int)offerId);
             return PartialView(comment);
+        }
+
+        [HttpPost]
+        public ActionResult AddRate(double? value, int? offerId)
+        {
+            var rating = _repo.AddRate((double)value, User.Identity.Name, (int)offerId);
+            return PartialView(rating);
         }
     }
 }

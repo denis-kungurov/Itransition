@@ -1,7 +1,7 @@
 ﻿@if (Request.IsAuthenticated)
 {
     <ui class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Hello, "+User.Identity.Name, "Profile", "Account")</li>
+        <li>@Html.ActionLink("Hello, "+User.Identity.Name, "ProfilePage", "Account")</li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
         <li>
             @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))

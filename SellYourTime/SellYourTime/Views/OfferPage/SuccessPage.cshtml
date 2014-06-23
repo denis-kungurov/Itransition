@@ -1,11 +1,14 @@
-﻿@{
+﻿@model SellYourTime.Models.Offer
+@{
     ViewBag.Title = "Success Page";
 }
 
 <div class="col-xs-offset-1 col-xs-10">
     <div class="jumbotron">
         <center><h1>Success</h1></center>
-        <p>Оrder has been added to your list order. You can view your orders in your profile</p>
-        <p><a href="@Url.Action("Profile","Account")" class="btn btn-primary btn-lg">Go to profile</a></p>
+        <p>Оrder has been added to your list order. You can contact the seller using his contact data</p>
+        <p>Seller Contact data: @Model.User.ContactData</p>
+        <p>You can view your orders in your profile</p>
+        <p><a href="@Url.Action("ProfilePage","Account")" class="btn btn-primary btn-lg">Go to profile</a></p>
     </div>
 </div>

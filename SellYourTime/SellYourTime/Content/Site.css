@@ -35,3 +35,10 @@
     #Cloud a:hover {
         color: crimson;
     }
+
+.stars
+{
+    margin: 20px 0;
+    font-size: 36px;
+    color: goldenrod;
+}

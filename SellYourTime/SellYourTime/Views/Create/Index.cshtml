@@ -1,7 +1,7 @@
 ﻿@using SellYourTime.Models
 @model SellYourTime.Models.UploadPhotoModel
 <div class="col-xs-4 col-xs-offset-4">
-    <form class="form-horizontal" method="POST" action="@Url.Action("Index", new { updOfferId = ViewBag.Offer.Id})" enctype="multipart/form-data">
+    <form class="form-horizontal" method="POST" action="@Url.Action("Index", new { updOfferId = ViewBag.OfferId})" enctype="multipart/form-data">
         <fieldset>
             <legend>Create</legend>
             <div class="form-group">
@@ -109,17 +109,16 @@
         </fieldset>
     </form>
 </div>
-
-<script type="text/javascript">
-    window.i = 1;
-    function addFile() {
-        if (i == 1) {
-            document.getElementById("secondFileInput").hidden = false;
-            i++;
-        } else if (i == 2) {
-            document.getElementById("thirdFileInput").hidden = false;
-            $('#AddMore').replaceWith('<button type="button" class="btn btn-primary disabled col-xs-offset-3 col-xs-6" id="AddMore">maximum photo</button>');
-            i++;
-        }
-    }
+<script src="~/Scripts/coffee-script.js"></script>
+<script type="text/coffeescript">
+    window.addFile = addFile = ->
+        if i is 1
+            document.getElementById("secondFileInput").hidden = false
+            i++
+        else if i is 2
+            document.getElementById("thirdFileInput").hidden = false
+            $("#AddMore").replaceWith "<button type=\"button\" class=\"btn btn-primary disabled col-xs-offset-3 col-xs-6\" id=\"AddMore\">maximum photo</button>"
+            i++
+        return
+    window.i = 1
 </script>

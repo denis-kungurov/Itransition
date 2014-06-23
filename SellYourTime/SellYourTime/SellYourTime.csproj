@@ -339,11 +339,12 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Create\Index.cshtml" />
     <Content Include="Views\OfferPage\ShowPage.cshtml" />
-    <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Account\ProfilePage.cshtml" />
     <Content Include="Views\OfferPage\AddComment.cshtml" />
     <Content Include="Views\OfferPage\SuccessPage.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
     <Content Include="Views\Search\_Preview.cshtml" />
+    <Content Include="Views\OfferPage\AddRate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
