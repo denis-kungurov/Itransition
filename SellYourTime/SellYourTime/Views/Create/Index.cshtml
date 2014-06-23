@@ -21,8 +21,8 @@
                 <label for="tg" class="col-lg-2 control-label">Tag</label>
                 <div class="col-lg-10">
                     @if (ViewBag.Offer != null)
-{
-    <input type="text" class="form-control" name="tg" id="tg" placeholder="Tag" value="@foreach (Tag tag in ViewBag.Offer.Tags) { @tag.Value  }" required>
+                    {
+                        <input type="text" class="form-control" name="tg" id="tg" placeholder="Tag" value="@foreach (Tag tag in ViewBag.Offer.Tags) { @tag.Value  }" required>
                     }
                     else
                     {

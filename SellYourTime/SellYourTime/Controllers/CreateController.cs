@@ -35,7 +35,7 @@ namespace SellYourTime.Controllers
         {
             if (photo.FirstPostedFile != null)
             {
-                string pic = (new Random()).Next(2,2000000000).ToString() + System.IO.Path.GetExtension(photo.FirstPostedFile.FileName);
+                string pic = (new Random()).Next(2, 2000000000).ToString() + System.IO.Path.GetExtension(photo.FirstPostedFile.FileName);
                 string path = System.IO.Path.Combine(
                     Server.MapPath("~/Images"), pic);
                 // file is uploaded
@@ -68,7 +68,7 @@ namespace SellYourTime.Controllers
             {
                 _repo.AddOffer(offer, User.Identity.Name, tg);
             }
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
 
     }

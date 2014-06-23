@@ -56,7 +56,7 @@ namespace SellYourTime.Controllers
         [HttpPost]
         public ActionResult AddComment(String message, int? offerId)
         {
-            var comment = _repo.AddComment(message, User.Identity.Name, DateTime.Now,(int)offerId);
+            var comment = _repo.AddComment(message, User.Identity.Name, DateTime.Now, (int)offerId);
             return PartialView(comment);
         }
 

@@ -57,7 +57,7 @@ namespace SellYourTime.Models
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual UserProfile User { get; set; }
         public virtual double? Rating { get; set; }
-        public virtual int? SumRating { get; set; }
+        public virtual double? SumRating { get; set; }
         public virtual ICollection<Rate> Rates { get; set; } 
     }
 

@@ -338,7 +338,7 @@ namespace SellYourTime.Controllers
         public ActionResult ConfirmBuyind(int? orderId, int? userId)
         {
             _repo.ConfirmBuying((int)orderId, (int)userId);
-            return RedirectToAction("ProfilePage");
+            return RedirectToAction("Profile");
         }
 
         #region Helpers

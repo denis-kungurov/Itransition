@@ -166,12 +166,18 @@ namespace SellYourTime.Models
             var offer = FindOfferById(offerId);
             var user = FindUserByName(userName);
             var rate = new Rate();
+            if (offer.SumRating == null)
+            {
+                offer.SumRating = 0;
+            }
+            offer.SumRating += value;
             rate.Offer = offer;
             rate.User = user;
             rate.Value = value;
             _db.Rates.Add(rate);
+            offer.Rating = Math.Round((double)(offer.SumRating/offer.Rates.Count),1);
             _db.SaveChanges();
-            return (double)(offer.SumRating / offer.Rates.Count);
+            return (double)offer.Rating;
         }
 
         public void AddOrder(int id, String userName)

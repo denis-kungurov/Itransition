@@ -45,10 +45,10 @@
             {
                 <tr onclick="location.href='@Url.Action("ShowPage","OfferPage", new { id = offer.Id})'">
                     <td>
-                        @if (offer.FirstPhotoPath != null)
-                        {
-                            <img src=@offer.FirstPhotoPath style="width: 36px; height: 36px" />
-                        }
+                    @if (offer.FirstPhotoPath != null)
+                    {
+                                <img src=@offer.FirstPhotoPath style="width: 36px; height: 36px" />
+                    }
                     </td>
                     <td>@offer.Title</td>
                     <td>@offer.Price</td>
