@@ -345,6 +345,7 @@
     <Content Include="Views\Search\Search.cshtml" />
     <Content Include="Views\Search\_Preview.cshtml" />
     <Content Include="Views\OfferPage\AddRate.cshtml" />
+    <Content Include="Views\OfferPage\AddRateUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

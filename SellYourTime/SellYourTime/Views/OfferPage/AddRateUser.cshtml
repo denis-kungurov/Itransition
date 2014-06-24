@@ -1,0 +1,9 @@
+﻿@model SellYourTime.Models.UserProfile
+<li class="col-xs-12" style="list-style: none;" id="rateUserItem">
+    <span class="badge col-xs-offset-3 col-xs-2" style="background-color: forestgreen">
+        @Model.Likes.Count
+    </span>
+    <span class="badge col-xs-2" style="background-color: tomato;">
+        @Model.Dislikes.Count
+    </span>
+</li>

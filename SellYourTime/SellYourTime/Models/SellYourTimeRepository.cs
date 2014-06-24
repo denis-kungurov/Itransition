@@ -31,8 +31,15 @@ namespace SellYourTime.Models
             var tg = _db.Tags.FirstOrDefault(t => t.Value == tag);
             if (tg != null)
                 return tg.Offers.ToList();
-            else
-                return new List<Offer>();
+            return new List<Offer>();
+        }
+
+        public ICollection<Offer> GetOfferByUserName(String userName)
+        {
+            var user = _db.UserProfiles.FirstOrDefault(u => u.UserName == userName);
+            if (user != null)
+                return user.Offers.ToList();
+            return new List<Offer>();
         }
 
         public ICollection<Offer> GetLatestFiveOffers()
@@ -53,6 +60,11 @@ namespace SellYourTime.Models
         public ICollection<Offer> GetTopOffers()
         {
             return _db.Offers.OrderByDescending(o => o.Rating).Take(5).ToList();
+        }
+
+        public ICollection<UserProfile> GetTopUsers()
+        {
+            return _db.UserProfiles.OrderByDescending(u => u.Rating).Take(5).ToList();
         }
 
         public UserProfile FindUserByName(String name)
@@ -91,6 +103,28 @@ namespace SellYourTime.Models
                 return true;
             }
             return false;
+        }
+
+        public bool IsUserEvaluateUser(string userName, int userId)
+        {
+            var user = FindUserById(userId);
+            dynamic rates = user.Likes.Where(l => l.RaterProfile.UserName == userName).ToList();
+            if (rates.Count != 0)
+            {
+                return true;
+            }
+            else
+            {
+                rates = user.Dislikes.Where(D => D.RaterProfile.UserName == userName).ToList();
+                if (rates.Count != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
 
         public void AddOffer(Offer offer, String name, string tg)
@@ -159,6 +193,42 @@ namespace SellYourTime.Models
             _db.Comments.Add(comment);
             _db.SaveChanges();
             return comment;
+        }
+
+        public UserProfile AddRateUser(String value, String userName, int userId)
+        {
+            var user = FindUserById(userId);
+            var rater = FindUserByName(userName);
+            if (value == "like")
+            {
+                var like = new Like();
+                like.RaterProfile = rater;
+                like.UserProfile = user;
+                _db.Likes.Add(like);
+                user.Likes.Add(like);
+                _db.SaveChanges();
+            }
+            else if (value == "dislike")
+            {
+                var dislike = new Dislike();
+                dislike.RaterProfile = rater;
+                dislike.UserProfile = user;
+                _db.Dislikes.Add(dislike);
+                user.Dislikes.Add(dislike);
+                _db.SaveChanges();
+            }
+            user.Rating = Wilson_score(user.Likes.Count, user.Dislikes.Count);
+            _db.SaveChanges();
+            return user;
+        }
+    
+        public double Wilson_score(int up, int down)
+        {
+            if (up == 0) return -down;
+            var n = up + down;
+            var z = 1.64485; //1.0 = 85%, 1.6 = 95%
+            var phat = up / n;
+            return (phat+z*z/(2*n)-z*Math.Sqrt((phat*(1-phat)+z*z/(4*n))/n))/(1+z*z/n);
         }
 
         public double AddRate(int value, String userName, int offerId)

@@ -38,10 +38,20 @@ namespace SellYourTime.Controllers
                     {
                         ViewBag.CurrentUser = 2;
                     }
+
+                    if (_repo.IsUserEvaluateUser(user.UserName, offer.User.UserId))
+                    {
+                        ViewBag.ShowLikeDislike = 1;
+                    }
+                    else
+                    {
+                        ViewBag.ShowLikeDislike = 2;
+                    }
                 }
                 else
                 {
                     ViewBag.CurrentUser = null;
+                    ViewBag.ShowLikeDislike = null;
                 }
                 return View(offer);
             }
@@ -65,6 +75,13 @@ namespace SellYourTime.Controllers
         {
             var rating = _repo.AddRate((int)value, User.Identity.Name, (int)offerId);
             return PartialView(rating);
+        }
+
+        [HttpPost]
+        public ActionResult AddRateUser(String value, int? userId)
+        {
+            var user = _repo.AddRateUser(value, User.Identity.Name, (int)userId);
+            return PartialView(user);
         }
     }
 }

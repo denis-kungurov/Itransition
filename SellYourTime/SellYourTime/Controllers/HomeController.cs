@@ -18,6 +18,7 @@ namespace SellYourTime.Controllers
             var tags = _repo.GetTenMostPopularTags();
             ViewBag.Tags = tags;
             ViewBag.TopOffers = _repo.GetTopOffers();
+            ViewBag.TopUsers = _repo.GetTopUsers();
             return View(_repo.GetLatestFiveOffers());
         }
 

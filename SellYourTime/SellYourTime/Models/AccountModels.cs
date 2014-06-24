@@ -21,7 +21,9 @@ namespace SellYourTime.Models
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<Rate> Rates { get; set; } 
+        public DbSet<Rate> Rates { get; set; }
+        public DbSet<Like> Likes { get; set; }
+        public DbSet<Dislike> Dislikes { get; set; } 
     }
 
     [Table("UserProfile")]
@@ -37,8 +39,8 @@ namespace SellYourTime.Models
         public virtual ICollection<Offer> Offers { get; set; }
         public virtual ICollection<Order> YourOrders { get; set; }
         public virtual ICollection<Order> BuyingFromYou { get; set; }
-        public virtual ICollection<UserProfile> LikedUsers { get; set; }
-        public virtual ICollection<UserProfile> DislikedUsers { get; set; }
+        public virtual ICollection<Like> Likes { get; set; }
+        public virtual ICollection<Dislike> Dislikes { get; set; }
         public virtual double? Rating { get; set; }
 }
 
@@ -79,6 +81,24 @@ namespace SellYourTime.Models
         public virtual int? Value { get; set; }
         public virtual UserProfile User { get; set; }
         public virtual Offer Offer { get; set; }
+    }
+
+    public class Like
+    {
+        [Key]
+        public int Id { get; set; }
+
+        public UserProfile RaterProfile { get; set; }
+        public UserProfile UserProfile { get; set; }
+    }
+
+    public class Dislike
+    {
+        [Key]
+        public int Id { get; set; }
+
+        public UserProfile RaterProfile { get; set; }
+        public UserProfile UserProfile { get; set; }
     }
 
     public class Comment

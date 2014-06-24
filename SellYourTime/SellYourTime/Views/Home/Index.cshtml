@@ -29,62 +29,68 @@
         </ul>
     </div>
 </div>
-<div class="col-xs-6" style="margin-left: 50px">
-    <h2>Latest @Model.Count offers</h2>
-    <table class="table table-striped table-hover ">
-        <thead>
-            <tr>
-                <td>Image</td>
-                <td>Title</td>
-                <td>Price</td>
-                <td>Info</td>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (Offer offer in Model)
-            {
-                <tr onclick="location.href='@Url.Action("ShowPage","OfferPage", new { id = offer.Id})'">
-                    <td>
-                    @if (offer.FirstPhotoPath != null)
-                    {
-                                <img src=@offer.FirstPhotoPath style="width: 36px; height: 36px" />
-                    }
-                    </td>
-                    <td>@offer.Title</td>
-                    <td>@offer.Price</td>
-                    <td>Posted by @offer.User.UserName on @offer.DateAdded</td>
+<div class="col-xs-12 row">
+    <div class="col-xs-4" style="margin-left: 30px">
+        <h2>Latest @Model.Count offers</h2>
+        <table class="table table-striped table-hover col-xs-12">
+            <thead>
+                <tr>
+                    <td class="col-xs-6">Title</td>
+                    <td class="col-xs-2">Price</td>
+                    <td class="col-xs-4">Info</td>
                 </tr>
-            }
-        </tbody>
-    </table>
-</div>
-<div class="col-xs-6" style="margin-left: 50px">
-    <h2>Top @ViewBag.TopOffers.Count offers</h2>
-    <table class="table table-striped table-hover ">
-        <thead>
-            <tr>
-                <td>Image</td>
-                <td>Title</td>
-                <td>Price</td>
-                <td>Info</td>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (Offer offer in ViewBag.TopOffers)
-            {
-                <tr onclick="location.href='@Url.Action("ShowPage","OfferPage", new { id = offer.Id})'">
-                    <td>
-                        @if (offer.FirstPhotoPath != null)
-                        {
-                            <img src=@offer.FirstPhotoPath style="width: 36px; height: 36px" />
-                        }
-                    </td>
-                    <td>@offer.Title</td>
-                    <td>@offer.Price</td>
-                    <td>Posted by @offer.User.UserName on @offer.DateAdded</td>
+            </thead>
+            <tbody>
+                @foreach (Offer offer in Model)
+                {
+                    <tr onclick="location.href='@Url.Action("ShowPage","OfferPage", new { id = offer.Id})'">
+                        <td>@offer.Title</td>
+                        <td>@offer.Price</td>
+                        <td>Posted by @offer.User.UserName on @offer.DateAdded</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-xs-4" style="margin-left: 30px">
+        <h2>Top @ViewBag.TopOffers.Count offers</h2>
+        <table class="table table-striped table-hover ">
+            <thead>
+                <tr>
+                    <td class="col-xs-6">Title</td>
+                    <td class="col-xs-2">Price</td>
+                    <td class="col-xs-4">Info</td>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (Offer offer in ViewBag.TopOffers)
+                {
+                    <tr onclick="location.href='@Url.Action("ShowPage","OfferPage", new { id = offer.Id})'">
+                        <td>@offer.Title</td>
+                        <td>@offer.Price</td>
+                        <td>Posted by @offer.User.UserName on @offer.DateAdded</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-xs-3" style="margin-left: 30px">
+        <h2>Top @ViewBag.TopUsers.Count users</h2>
+        <table class="table table-striped table-hover ">
+            <thead>
+                <tr>
+                    <td class="col-xs-12">Name</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (UserProfile user in ViewBag.TopUsers)
+                {
+                    <tr onclick="location.href='@Url.Action("Search", "Search", new { searchQuery = user.UserName, searchMethod = "user" })'">
+                        <td>@user.UserName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
 
