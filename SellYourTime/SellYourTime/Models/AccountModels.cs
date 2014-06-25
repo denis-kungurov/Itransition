@@ -36,6 +36,7 @@ namespace SellYourTime.Models
         public virtual string UserName { get; set; }
         public virtual string Email { get; set; }
         public virtual string ContactData { get; set; }
+        public virtual string Role { get; set; }
         public virtual ICollection<Offer> Offers { get; set; }
         public virtual ICollection<Order> YourOrders { get; set; }
         public virtual ICollection<Order> BuyingFromYou { get; set; }

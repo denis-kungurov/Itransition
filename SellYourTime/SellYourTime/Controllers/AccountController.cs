@@ -81,6 +81,11 @@ namespace SellYourTime.Controllers
                 try
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new { Email = model.Email, ContactData = model.ContactData});
+                    if (model.UserName == "admin") _repo.AddToRole(model.UserName, "Admin");
+                    else
+                    {
+                        _repo.AddToRole(model.UserName, "User");
+                    }
                     WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");
                 }
@@ -338,7 +343,7 @@ namespace SellYourTime.Controllers
         public ActionResult ConfirmBuyind(int? orderId, int? userId)
         {
             _repo.ConfirmBuying((int)orderId, (int)userId);
-            return RedirectToAction("Profile");
+            return RedirectToAction("ProfilePage");
         }
 
         #region Helpers

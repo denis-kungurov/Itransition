@@ -53,7 +53,7 @@
             </h3>
         </div>
         <div class="col-xs-1">
-            @if (Model.User.UserName == User.Identity.Name)
+            @if (Model.User.UserName == User.Identity.Name || ViewBag.CurrentUserRole == "Admin")
             {
                 <a type="button" class="btn btn-success" style="padding: 0" href="@Url.Action("Index","Create", new { offerId = Model.Id})"> Edit </a>
             }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.Services.Description;
 using SellYourTime.Search;
 
@@ -70,6 +71,12 @@ namespace SellYourTime.Models
         public UserProfile FindUserByName(String name)
         {
             return _db.UserProfiles.FirstOrDefault(u => u.UserName == name);
+        }
+
+        public void AddToRole(String userName, String role)
+        {
+            FindUserByName(userName).Role = role;
+            _db.SaveChanges();
         }
 
         public Tag FindTagByValue(String value)

@@ -12,6 +12,7 @@ namespace SellYourTime.Controllers
     {
         private SellYourTimeRepository _repo = new SellYourTimeRepository();
 
+        [Authorize]
         public ActionResult Index(int? offerId)
         {
             ViewBag.Tag = new Tag();
