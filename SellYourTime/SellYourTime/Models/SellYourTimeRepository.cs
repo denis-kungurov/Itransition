@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.Services.Description;
+using Microsoft.VisualBasic;
 using SellYourTime.Search;
 
 namespace SellYourTime.Models
@@ -138,18 +139,22 @@ namespace SellYourTime.Models
         {
             offer.DateAdded = DateTime.Now;
             offer.Tags = new List<Tag>();
-            var tag = FindTagByValue(tg);
-            if (tag == null)
+            var separators = new char[] {' '};
+            var tags = tg.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string t in tags)
             {
-                tag = new Tag();
-                tag.Value = tg;
+                var tag = FindTagByValue(t);
+                if (tag == null)
+                {
+                    tag = new Tag();
+                    tag.Value = t;
+                }
+                offer.Tags.Add(tag);
             }
-
             var user = FindUserByName(name);
             if (user != null)
             {
                 offer.User = user;
-                offer.Tags.Add(tag);
                 _db.Offers.Add(offer);
                 user.Offers.Add(offer);
                 _db.SaveChanges();
@@ -159,13 +164,18 @@ namespace SellYourTime.Models
         public void UpdateOffer(int updOfferId, Offer offer, String name, string tg)
         {
             offer.Tags = new List<Tag>();
-            var tag = FindTagByValue(tg);
-            if (tag == null)
+            var separators = new char[] { ' ' };
+            var tags = tg.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string t in tags)
             {
-                tag = new Tag();
-                tag.Value = tg;
+                var tag = FindTagByValue(t);
+                if (tag == null)
+                {
+                    tag = new Tag();
+                    tag.Value = t;
+                }
+                offer.Tags.Add(tag);
             }
-            offer.Tags.Add(tag);
             var updOffer = FindOfferById(updOfferId);
             updOffer.Title = offer.Title;
             updOffer.Tags.Clear();

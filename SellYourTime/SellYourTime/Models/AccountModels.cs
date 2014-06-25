@@ -89,8 +89,8 @@ namespace SellYourTime.Models
         [Key]
         public int Id { get; set; }
 
-        public UserProfile RaterProfile { get; set; }
-        public UserProfile UserProfile { get; set; }
+        public virtual UserProfile RaterProfile { get; set; }
+        public virtual UserProfile UserProfile { get; set; }
     }
 
     public class Dislike
@@ -98,8 +98,8 @@ namespace SellYourTime.Models
         [Key]
         public int Id { get; set; }
 
-        public UserProfile RaterProfile { get; set; }
-        public UserProfile UserProfile { get; set; }
+        public virtual UserProfile RaterProfile { get; set; }
+        public virtual UserProfile UserProfile { get; set; }
     }
 
     public class Comment

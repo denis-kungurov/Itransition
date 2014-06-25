@@ -59,7 +59,7 @@
             <div class="form-group" id="InputFiles">
                 <label for="FirstPostedFile" class="col-lg-2 control-label">Photo</label>
                 <div id="firstFileInput" class="col-lg-10">
-                    <input id="firstlefile" type="file" name="FirstPostedFile" style="display:none" onchange="">
+                    <input id="firstlefile" type="file" name="FirstPostedFile" style="display:none" onchange="document.getElementById('firstphotoCover').value = document.getElementById('firstlefile').value">
                     <div class="input-group input-append" id="firstloadGroup">
                         <input type="text" id="firstphotoCover" class="form-control" placeholder="Choose a photo">
                         <span class="input-group-btn">
@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <div id="secondFileInput" class="col-lg-offset-2 col-lg-10" hidden>
-                    <input id="secondlefile" type="file" name="SecondPostedFile" style="display:none" onchange="">
+                    <input id="secondlefile" type="file" name="SecondPostedFile" style="display:none" onchange="document.getElementById('secondphotoCover').value = document.getElementById('secondlefile').value">
                     <div class="input-group input-append" id="secondloadGroup">
                         <input type="text" id="secondphotoCover" class="form-control" placeholder="Choose a photo">
                         <span class="input-group-btn">
@@ -83,7 +83,7 @@
                     </div>
                 </div>
                 <div id="thirdFileInput" class="col-lg-offset-2 col-lg-10" hidden>
-                    <input id="thirdlefile" type="file" name="ThirdPostedFile" style="display:none" onchange="">
+                    <input id="thirdlefile" type="file" name="ThirdPostedFile" style="display:none" onchange="document.getElementById('thirdphotoCover').value = document.getElementById('thirdlefile').value">
                     <div class="input-group input-append" id="thirdloadGroup">
                         <input type="text" id="thirdphotoCover" class="form-control" placeholder="Choose a photo">
                         <span class="input-group-btn">
