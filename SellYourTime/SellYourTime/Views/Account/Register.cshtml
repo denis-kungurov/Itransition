@@ -1,11 +1,11 @@
 ﻿@model SellYourTime.Models.RegisterModel
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = @Resources.Resource.Register;
 }
 
 <hgroup class="title">
     <h1 class="col-xs-offset-1" style="margin-bottom: 20px">@ViewBag.Title</h1>
-    <h2 class="col-xs-offset-1" style="margin-bottom: 20px">Create a new account</h2>
+    <h2 class="col-xs-offset-1" style="margin-bottom: 20px">@Resources.Resource.CreateNewAcc</h2>
 </hgroup>
 
 @using (Html.BeginForm()) {
@@ -14,7 +14,7 @@
 
     <fieldset>
         <div class="col-xs-12">
-            <legend class="col-xs-offset-2 col-xs-6"><span>Registration Form</span></legend>
+            <legend class="col-xs-offset-2 col-xs-6"><span>@Resources.Resource.RegForm</span></legend>
         </div>
         <div class="col-xs-offset-2 col-xs-10">
             <p class="col-xs-12">
@@ -41,22 +41,6 @@
                     @Html.TextBoxFor(m => m.ContactData, new { @class = "form-control" })
                 </div>
             </p>
-            @*<p class="col-xs-12">
-                <div class="col-xs-2">
-                    <label>Email</label>
-                </div>
-                <div class="col-xs-4">
-                    <input class="form-control" name="email" />
-                </div>
-            </p>
-            <p class="col-xs-12">
-                <div class="col-xs-2">
-                    <label>Contact data</label>
-                </div>
-                <div class="col-xs-4">
-                    <input class="form-control" name="contactData" />
-                </div>
-            </p>*@
             <p class="col-xs-12">
                 <div class="col-xs-2">
                     @Html.LabelFor(m => m.Password)
@@ -74,7 +58,7 @@
                 </div>
             </p>
             <p class="col-xs-12">
-                <button class="btn btn-danger col-xs-3" style="margin-top: 15px" type="submit">Register</button>
+                <button class="btn btn-danger col-xs-3" style="margin-top: 15px" type="submit">@Resources.Resource.Register</button>
             </p>
         </div>
     </fieldset>

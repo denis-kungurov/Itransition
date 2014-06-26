@@ -4,19 +4,21 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SellYourTime.Filters;
 using SellYourTime.Models;
 
 namespace SellYourTime.Controllers
 {
+    [Culture]
+    [Authorize]
     public class CreateController : Controller
     {
         private SellYourTimeRepository _repo = new SellYourTimeRepository();
 
-        [Authorize]
         public ActionResult Index(int? offerId)
         {
             ViewBag.Tag = new Tag();
-            ViewBag.Title = "Create";
+            ViewBag.Title = @Resources.Resource.CreateNav;
             var offer = _repo.FindOfferById(offerId);
             ViewBag.Offer = offer;
             if (offer == null)

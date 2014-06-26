@@ -1,6 +1,6 @@
 ﻿@model SellYourTime.Models.LocalPasswordModel
 @{
-    ViewBag.Title = "Manage Account";
+    ViewBag.Title = @Resources.Resource.ManAcc;
 }
 
 <hgroup class="title col-xs-offset-1">
@@ -9,7 +9,7 @@
 
 <p class="message-success col-xs-offset-1"><span style="color: lime">@ViewBag.StatusMessage</span></p>
 
-<p class="col-xs-offset-1">You're logged in as <strong>@User.Identity.Name</strong>.</p>
+<p class="col-xs-offset-1">@Resources.Resource.LggAs <strong>@User.Identity.Name</strong>.</p>
 
 @if (ViewBag.HasLocalPassword)
 {

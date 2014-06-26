@@ -1,7 +1,7 @@
 ﻿@model SellYourTime.Models.LoginModel
 
 @{
-    ViewBag.Title = "Log in";
+    ViewBag.Title = @Resources.Resource.LogIn;
 }
 
 <hgroup class="title">
@@ -9,7 +9,7 @@
 </hgroup>
 
 <section id="loginForm">
-    <h2 class="col-xs-offset-1">Use a local account to log in</h2>
+    <h2 class="col-xs-offset-1">@Resources.Resource.UseLocalAcc</h2>
     @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
     {
         <div class="col-xs-offset-1"> @Html.AntiForgeryToken() </div>
@@ -17,7 +17,7 @@
 
         <fieldset>
             <div class="col-xs-12">
-                <legend class="col-xs-offset-2 col-xs-6"><span>Log in Form</span></legend>
+                <legend class="col-xs-offset-2 col-xs-6"><span>@Resources.Resource.LogInForm</span></legend>
             </div>
             <div class="col-xs-offset-2 col-xs-10">
                 <p class="col-xs-12">
@@ -53,10 +53,10 @@
                     </div>
                 </p>
                 <p class="col-xs-12">
-                    <button class="btn btn-danger col-xs-3" style="margin-top: 15px" type="submit">Log in</button>
+                    <button class="btn btn-danger col-xs-3" style="margin-top: 15px" type="submit">@Resources.Resource.LogIn</button>
                 </p>
                 <p class="col-xs-12">
-                    @Html.ActionLink("Register", "Register") if you don't have an account.
+                    @Html.ActionLink("Register", "Register") @Resources.Resource.DontHaveAcc
                 </p>
             </div>
         </fieldset>

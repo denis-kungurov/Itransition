@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SellYourTime.Filters;
 using SellYourTime.Models;
 
 namespace SellYourTime.Controllers
 {
+    [Culture]
     public class SearchController : Controller
     {
         private SellYourTimeRepository _repo = new SellYourTimeRepository();

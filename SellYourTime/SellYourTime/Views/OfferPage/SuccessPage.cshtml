@@ -5,10 +5,10 @@
 
 <div class="col-xs-offset-1 col-xs-10">
     <div class="jumbotron">
-        <center><h1>Success</h1></center>
-        <p>Оrder has been added to your list order. You can contact the seller using his contact data</p>
-        <p>Seller Contact data: @Model.User.ContactData</p>
-        <p>You can view your orders in your profile</p>
-        <p><a href="@Url.Action("ProfilePage","Account")" class="btn btn-primary btn-lg">Go to profile</a></p>
+        <center><h1>@Resources.Resource.Success</h1></center>
+        <p>@Resources.Resource.Success1</p>
+        <p>@Resources.Resource.Success2: @Model.User.ContactData</p>
+        <p>@Resources.Resource.Success3</p>
+        <p><a href="@Url.Action("ProfilePage","Account")" class="btn btn-primary btn-lg">@Resources.Resource.GoProfile</a></p>
     </div>
 </div>

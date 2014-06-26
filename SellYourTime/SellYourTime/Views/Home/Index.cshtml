@@ -9,9 +9,9 @@
         <h1 style="margin-top: 10px">Sell your Time</h1>
         <p>
             <h4>
-                Вы можете купить встречу с понравившимся вам человеком, и он сходит с вами в кино, прогуляется по парку, поужинает с вами.
-                Здесь каждый продаёт своё время и указывает, как оно может быть использовано.
-                Заработав деньги, можно купить чужое время, или снять их.
+                @Resources.Resource.Main1
+                @Resources.Resource.Main2
+                @Resources.Resource.Main3
             </h4>
         </p>
 
@@ -31,13 +31,13 @@
 </div>
 <div class="col-xs-12 row">
     <div class="col-xs-4" style="margin-left: 30px">
-        <h2>Latest @Model.Count offers</h2>
+        <h2>@Resources.Resource.Latest @Model.Count @Resources.Resource.offers</h2>
         <table class="table table-striped table-hover col-xs-12">
             <thead>
                 <tr>
-                    <td class="col-xs-6">Title</td>
-                    <td class="col-xs-2">Price</td>
-                    <td class="col-xs-4">Info</td>
+                    <td class="col-xs-6">@Resources.Resource.Title</td>
+                    <td class="col-xs-2">@Resources.Resource.Price</td>
+                    <td class="col-xs-4">@Resources.Resource.Info</td>
                 </tr>
             </thead>
             <tbody>
@@ -46,20 +46,20 @@
                     <tr onclick="location.href='@Url.Action("ShowPage","OfferPage", new { id = offer.Id})'">
                         <td>@offer.Title</td>
                         <td>@offer.Price</td>
-                        <td>Posted by @offer.User.UserName on @offer.DateAdded</td>
+                        <td>@Resources.Resource.PostedBy @offer.User.UserName on @offer.DateAdded</td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
     <div class="col-xs-4" style="margin-left: 30px">
-        <h2>Top @ViewBag.TopOffers.Count offers</h2>
+        <h2>@Resources.Resource.Top @ViewBag.TopOffers.Count @Resources.Resource.offers</h2>
         <table class="table table-striped table-hover ">
             <thead>
                 <tr>
-                    <td class="col-xs-6">Title</td>
-                    <td class="col-xs-2">Price</td>
-                    <td class="col-xs-4">Info</td>
+                    <td class="col-xs-6">@Resources.Resource.Title</td>
+                    <td class="col-xs-2">@Resources.Resource.Price</td>
+                    <td class="col-xs-4">@Resources.Resource.Info</td>
                 </tr>
             </thead>
             <tbody>
@@ -68,18 +68,18 @@
                     <tr onclick="location.href='@Url.Action("ShowPage","OfferPage", new { id = offer.Id})'">
                         <td>@offer.Title</td>
                         <td>@offer.Price</td>
-                        <td>Posted by @offer.User.UserName on @offer.DateAdded</td>
+                        <td>@Resources.Resource.PostedBy @offer.User.UserName on @offer.DateAdded</td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
     <div class="col-xs-3" style="margin-left: 30px">
-        <h2>Top @ViewBag.TopUsers.Count users</h2>
+        <h2>@Resources.Resource.Top @ViewBag.TopUsers.Count @Resources.Resource.users</h2>
         <table class="table table-striped table-hover ">
             <thead>
                 <tr>
-                    <td class="col-xs-12">Name</td>
+                    <td class="col-xs-12">@Resources.Resource.Name</td>
                 </tr>
             </thead>
             <tbody>

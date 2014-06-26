@@ -1,0 +1,53 @@
+﻿@using SellYourTime.Models
+@{
+    ViewBag.Title = @Resources.Resource.AdmPanel;
+}
+<div class="col-xs-12">
+    <h2 class="col-xs-offset-1">@ViewBag.Title</h2>
+</div>
+<div class="col-xs-12">
+    <div class="col-xs-5" style="margin-left: 30px">
+        <legend class="h2">@Resources.Resource.AllUsers</legend>
+        <table class="table table-striped table-hover ">
+            <thead>
+                <tr>
+                    <td class="col-xs-6">@Resources.Resource.Name</td>
+                    <td class="col-xs-4">@Resources.Resource.Command</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (UserProfile user in ViewBag.Users)
+                {
+                    <tr>
+                        <td onclick="location.href='@Url.Action("Search", "Search", new { searchQuery = user.UserName, searchMethod = "user" })'">@user.UserName</td>
+                        <td><button type="button" class="btn btn-danger col-xs-offset-1" style="padding-top: 0; padding-bottom: 0" onclick="location.href='@Url.Action("DeleteUser", new { userId = user.UserId})'"><h4>Delete</h4></button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-xs-6" style="margin-left: 30px">
+        <legend class="h2">@Resources.Resource.AllOffers</legend>
+        <table class="table table-striped table-hover ">
+            <thead>
+                <tr>
+                    <td class="col-xs-5">@Resources.Resource.Title</td>
+                    <td class="col-xs-2">@Resources.Resource.Price</td>
+                    <td class="col-xs-3">@Resources.Resource.Info</td>
+                    <td class="col-xs-2">@Resources.Resource.Command</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Offer offer in ViewBag.Offers)
+                {
+                    <tr>
+                        <td onclick="location.href='@Url.Action("ShowPage","OfferPage", new { id = offer.Id})'">@offer.Title</td>
+                        <td onclick="location.href='@Url.Action("ShowPage","OfferPage", new { id = offer.Id})'">@offer.Price</td>
+                        <td onclick="location.href='@Url.Action("ShowPage","OfferPage", new { id = offer.Id})'">Posted by @offer.User.UserName on @offer.DateAdded</td>
+                        <td><button type="button" class="btn btn-danger col-xs-offset-1" style="padding-top: 0; padding-bottom: 0" onclick="location.href='@Url.Action("DeleteOffer", new { offerId = offer.Id})'"><h4>Delete</h4></button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

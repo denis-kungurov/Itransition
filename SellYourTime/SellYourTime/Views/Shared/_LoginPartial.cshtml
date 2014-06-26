@@ -1,8 +1,8 @@
 ﻿@if (Request.IsAuthenticated)
 {
     <ui class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Hello, "+User.Identity.Name, "ProfilePage", "Account")</li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        <li>@Html.ActionLink(@Resources.Resource.Hello + User.Identity.Name, "ProfilePage", "Account")</li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">@Resources.Resource.LogOff</a></li>
         <li>
             @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
             {
@@ -14,7 +14,7 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li><a href=@Url.Action("Register","Account")>Register</a></li>
-        <li><a href=@Url.Action("Login","Account")>Sing In</a></li>
+        <li><a href=@Url.Action("Register","Account")>@Resources.Resource.Register</a></li>
+        <li><a href=@Url.Action("Login","Account")>@Resources.Resource.SingIn</a></li>
     </ul>
 }

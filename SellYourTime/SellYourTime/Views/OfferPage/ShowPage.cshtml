@@ -2,7 +2,7 @@
 @using SellYourTime.Models
 @model SellYourTime.Models.Offer
 @{
-    ViewBag.Title = "Offer Page";
+    ViewBag.Title = @Resources.Resource.OfferPage;
 }
 
 <div class="panel panel-success col-xs-offset-1 col-xs-10" style="padding: 0">
@@ -14,7 +14,7 @@
         </div>
         <div class="col-xs-2">
             <h3 class="panel-title">
-                Rating:
+                @Resources.Resource.Rating:
                 <span id="ratingSpan">
                     @if (@Model.Rating != null)
                     {
@@ -28,7 +28,7 @@
                 <li style="list-style: none">
                     <div align="center">
                         <h3 class="panel-title">
-                            Created by:
+                            @Resources.Resource.CreatedBy:
                             @Model.User.UserName
                         </h3>
                     </div>
@@ -48,14 +48,14 @@
         </div>
         <div class="col-xs-2">
             <h3 class="panel-title">
-                <a>At:</a>
+                <a>@Resources.Resource.At:</a>
                 @Model.DateAdded
             </h3>
         </div>
         <div class="col-xs-1">
             @if (Model.User.UserName == User.Identity.Name || ViewBag.CurrentUserRole == "Admin")
             {
-                <a type="button" class="btn btn-success" style="padding: 0" href="@Url.Action("Index","Create", new { offerId = Model.Id})"> Edit </a>
+                <a type="button" class="btn btn-success" style="padding: 0" href="@Url.Action("Index","Create", new { offerId = Model.Id})"> @Resources.Resource.Edit </a>
             }
         </div>
     </div>
@@ -109,7 +109,9 @@
                     </a>
                 }
             </div>
-            <h3>@Model.Description</h3>
+            <div class="col-xs-offset-5">
+                <h3>@Model.Description</h3>
+            </div>
         </div>
         <div class="col-xs-5 row">
             <div class="col-xs-12">
@@ -124,11 +126,11 @@
         <div class="col-xs-12 row" style="margin-top: 20px">
             <div class="col-xs-offset-1 col-xs-4 row">
                 <span class="label label-danger col-xs-12 row" style="font-size: 30px; width: 100%; padding: 0">
-                    <div class="col-xs-4" style="padding-top: 5px; padding-bottom: 5px; font-size: 25px">Price:</div>
+                    <div class="col-xs-4" style="padding-top: 5px; padding-bottom: 5px; font-size: 25px">@Resources.Resource.Price:</div>
                     <span class="col-xs-offset-1 col-xs-7" style="height: 35px; margin-top: 5px">@Model.Price</span>
                 </span>
             </div>
-            <a type="button" class="btn btn-primary col-xs-offset-3 col-xs-4" href="@Url.Action("SuccessPage","OfferPage", new { id = Model.Id})"> Buy </a>
+            <a type="button" class="btn btn-primary col-xs-offset-3 col-xs-4" href="@Url.Action("SuccessPage","OfferPage", new { id = Model.Id})"> @Resources.Resource.Buy </a>
         </div>
         @if (ViewBag.CurrentUser != null && ViewBag.CurrentUser != 1)
         {
@@ -138,7 +140,7 @@
                     <div class="stars starrr" data-rating="0"></div>
                 </div>
                 <div class="col-xs-1" style="margin-top: 20px;padding-left: 0">
-                    <button type="button" class="btn btn-primary" id="Rate" onclick="AddRate()">Rate</button>
+                    <button type="button" class="btn btn-primary" id="Rate" onclick="AddRate()">@Resources.Resource.Rate</button>
                 </div>
             </div>
         }
@@ -147,7 +149,7 @@
 @if (ViewBag.CurrentUser != null)
 {
     <div class="panel panel-success col-xs-offset-1 col-xs-10" style="padding: 0; margin-top: 20px">
-        <legend class="h2"><div class=" col-xs-offset-1" style="margin-bottom: 10px">Comments</div></legend>
+        <legend class="h2"><div class=" col-xs-offset-1" style="margin-bottom: 10px">@Resources.Resource.Comments</div></legend>
         <div class="col-xs-12">
             <ul class="list-group col-xs-12" id="commentsList">
                 @if (Model.Comments != null)
@@ -169,10 +171,10 @@
                 }
             </ul>
         </div>
-        <h3 class="col-xs-offset-1 col-xs-11" style="margin-top: 10px">Create comment</h3>
+        <h3 class="col-xs-offset-1 col-xs-11" style="margin-top: 10px">@Resources.Resource.CreateComment</h3>
         <div class="col-xs-offset-1 col-xs-10" style="margin-bottom: 20px" id="new-review">
-            <textarea class="form-control" rows="4" name="comment" id="comment" placeholder="Your comment"></textarea>
-            <button type="button" class="btn btn-primary" style="margin-top: 10px" id="Create" onclick="AddComm()">Create comment</button>
+            <textarea class="form-control" rows="4" name="comment" id="comment" placeholder="@Resources.Resource.YourComment"></textarea>
+            <button type="button" class="btn btn-primary" style="margin-top: 10px" id="Create" onclick="AddComm()">@Resources.Resource.CreateComment</button>
         </div>
     </div>
 }

@@ -69,6 +69,11 @@ namespace SellYourTime.Models
             return _db.UserProfiles.OrderByDescending(u => u.Rating).Take(5).ToList();
         }
 
+        public ICollection<Rate> GetRatesByUserId(int userId)
+        {
+            return _db.Rates.Where(r => r.User.UserId == userId).ToList();
+        } 
+
         public UserProfile FindUserByName(String name)
         {
             return _db.UserProfiles.FirstOrDefault(u => u.UserName == name);
@@ -100,6 +105,15 @@ namespace SellYourTime.Models
             return _db.UserProfiles.FirstOrDefault(u => u.UserId == userId);
         }
 
+        public ICollection<Like> FindLikeByUserId(int userId)
+        {
+            return _db.Likes.Where(l => l.RaterProfile.UserId == userId).ToList();
+        }
+
+        public ICollection<Dislike> FindDislikeByUserId(int userId)
+        {
+            return _db.Dislikes.Where(l => l.RaterProfile.UserId == userId).ToList();
+        }
 
         public bool IsUserKudoed(string userName, int offerId)
         {
@@ -216,6 +230,14 @@ namespace SellYourTime.Models
         {
             var user = FindUserById(userId);
             var rater = FindUserByName(userName);
+            if (user.NumberLikes == null)
+            {
+                user.NumberLikes = 0;
+            }
+            if (user.NumberDislikes == null)
+            {
+                user.NumberDislikes = 0;
+            }
             if (value == "like")
             {
                 var like = new Like();
@@ -223,6 +245,7 @@ namespace SellYourTime.Models
                 like.UserProfile = user;
                 _db.Likes.Add(like);
                 user.Likes.Add(like);
+                user.NumberLikes++;
                 _db.SaveChanges();
             }
             else if (value == "dislike")
@@ -232,9 +255,10 @@ namespace SellYourTime.Models
                 dislike.UserProfile = user;
                 _db.Dislikes.Add(dislike);
                 user.Dislikes.Add(dislike);
+                user.NumberDislikes++;
                 _db.SaveChanges();
             }
-            user.Rating = Wilson_score(user.Likes.Count, user.Dislikes.Count);
+            user.Rating = Wilson_score((int)user.NumberLikes, (int)user.NumberDislikes);
             _db.SaveChanges();
             return user;
         }
@@ -334,6 +358,170 @@ namespace SellYourTime.Models
                     }
                 }
             }
+            _db.SaveChanges();
+        }
+
+        public void DeleteUserLikes(int userId)
+        {
+            var user = FindUserById(userId);
+            var likes = user.Likes.ToList();
+            foreach (Like like in likes)
+            {
+                _db.Likes.Remove(like);
+                _db.SaveChanges();
+            }
+            user.Likes.Clear();
+            _db.SaveChanges();
+        }
+
+        public void DeleteUserDislikes(int userId)
+        {
+            var user = FindUserById(userId);
+            var dislikes = user.Dislikes.ToList();
+            foreach (Dislike dislike in dislikes)
+            {
+                _db.Dislikes.Remove(dislike);
+                _db.SaveChanges();
+            }
+            user.Dislikes.Clear();
+            _db.SaveChanges();
+        }
+
+        public void DeleteLikesFromUser(int userId)
+        {
+            var likes = FindLikeByUserId(userId);
+            foreach (Like like in likes)
+            {
+                _db.Likes.Remove(like);
+                _db.SaveChanges();
+            }
+        }
+
+        public void DeleteDislikesFromUser(int userId)
+        {
+            var dislikes = FindDislikeByUserId(userId);
+            foreach (Dislike dislike in dislikes)
+            {
+                _db.Dislikes.Remove(dislike);
+                _db.SaveChanges();
+            }
+        }
+
+        public void DeleteBuyingFromUser(int userId)
+        {
+            var user = FindUserById(userId);
+            var buyingFrom = user.BuyingFromYou.ToList();
+            foreach (Order order in buyingFrom)
+            {
+                order.Buyer.YourOrders.Remove(order);
+                _db.Orders.Remove(order);
+                _db.SaveChanges();
+            }
+            user.BuyingFromYou.Clear();
+            _db.SaveChanges();
+        }
+
+        public void DeleteYourOrders(int userId)
+        {
+            var user = FindUserById(userId);
+            var yourOrders = user.YourOrders.ToList();
+            foreach (Order order in yourOrders)
+            {
+                order.Buyer.BuyingFromYou.Remove(order);
+                _db.Orders.Remove(order);
+                _db.SaveChanges();
+            }
+            user.YourOrders.Clear();
+            _db.SaveChanges();
+        }
+
+        public void DeleteOfferRates(int offerId)
+        {
+            var offer = FindOfferById(offerId);
+            var rates = offer.Rates.ToList();
+            foreach (Rate rate in rates)
+            {
+                _db.Rates.Remove(rate);
+                _db.SaveChanges();
+            }
+            offer.Rates.Clear();
+            _db.SaveChanges();
+        }
+
+        public void DeleteUserRates(int userId)
+        {
+            var rates = GetRatesByUserId(userId);
+            foreach (Rate rate in rates)
+            {
+                rate.Offer.Rates.Remove(rate);
+                rate.Offer.SumRating -= rate.Value;
+                _db.Rates.Remove(rate);
+                _db.SaveChanges();
+            }
+        }
+
+        public void DeleteOfferComments(int offerId)
+        {
+            var offer = FindOfferById(offerId);
+            var comments = offer.Comments.ToList();
+            foreach (Comment comment in comments)
+            {
+                _db.Comments.Remove(comment);
+                _db.SaveChanges();
+            }
+            offer.Comments.Clear();
+            _db.SaveChanges();
+        }
+
+        public void DeleteUserOffers(int userId)
+        {
+            var user = FindUserById(userId);
+            var offers = user.Offers.ToList(); 
+            foreach (Offer offer in offers)
+            {
+                DeleteOfferRates(offer.Id);
+                DeleteOfferComments(offer.Id);
+                _db.Offers.Remove(offer);
+                _db.SaveChanges();
+            }
+            user.Offers.Clear();
+            _db.SaveChanges();
+        }
+
+        public void DeleteOfferOrders(int offerId)
+        {
+            var orders = _db.Orders.Where(or => or.Offer.Id == offerId).ToList();
+            foreach (Order order in orders)
+            {
+                order.Buyer.YourOrders.Remove(order);
+                order.Seller.BuyingFromYou.Remove(order);
+                _db.Orders.Remove(order);
+                _db.SaveChanges();
+            }
+        }
+
+        public void DeleteUser(int userId)
+        {
+            DeleteUserLikes(userId);
+            DeleteLikesFromUser(userId);
+            DeleteUserDislikes(userId);
+            DeleteDislikesFromUser(userId);
+            DeleteBuyingFromUser(userId);
+            DeleteYourOrders(userId);
+            DeleteUserOffers(userId);
+            DeleteUserRates(userId);
+            _db.UserProfiles.Remove(FindUserById(userId));
+            _db.SaveChanges();
+        }
+
+        public void DeleteOffer(int offerId)
+        {
+            DeleteOfferComments(offerId);
+            DeleteOfferRates(offerId);
+            DeleteOfferOrders(offerId);
+            var offer = FindOfferById(offerId);
+            offer.User.Offers.Remove(offer);
+            _db.Offers.Remove(offer);
             _db.SaveChanges();
         }
     }

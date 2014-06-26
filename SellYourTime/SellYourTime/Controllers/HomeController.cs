@@ -4,18 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using SellYourTime.Filters;
 using SellYourTime.Search;
 using SellYourTime.Models;
 
 namespace SellYourTime.Controllers
 {
+    [Culture]
     public class HomeController : Controller
     {
         SellYourTimeRepository _repo = new SellYourTimeRepository();
         public ActionResult Index()
         {
             LuceneSearch.AddUpdateLuceneIndex(LuceneRepository.GetAll());
-            ViewBag.Message = "Вы можете продать встречу или купить встречу с другим человеком.";
             var tags = _repo.GetTenMostPopularTags();
             ViewBag.Tags = tags;
             ViewBag.TopOffers = _repo.GetTopOffers();
@@ -23,18 +24,29 @@ namespace SellYourTime.Controllers
             return View(_repo.GetLatestFiveOffers());
         }
 
-        public ActionResult About()
+        public ActionResult ChangeCulture(string lang)
         {
-            ViewBag.Message = "Your app description page.";
+            string returnUrl = Request.UrlReferrer.AbsoluteUri;
+            // Список культур
+            List<string> cultures = new List<string>() { "ru", "en", "de" };
+            if (!cultures.Contains(lang))
+            {
+                lang = "ru";
+            }
+            // Сохраняем выбранную культуру в куки
+            HttpCookie cookie = Request.Cookies["lang"];
+            if (cookie != null)
+                cookie.Value = lang;   // если куки уже установлено, то обновляем значение
+            else
+            {
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+                cookie = new HttpCookie("lang");
+                cookie.HttpOnly = false;
+                cookie.Value = lang;
+                cookie.Expires = DateTime.Now.AddYears(1);
+            }
+            Response.Cookies.Add(cookie);
+            return Redirect(returnUrl);
         }
     }
 }

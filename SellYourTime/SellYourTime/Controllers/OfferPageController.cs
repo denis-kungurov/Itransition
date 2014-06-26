@@ -5,10 +5,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using SellYourTime.Filters;
 using SellYourTime.Models;
 
 namespace SellYourTime.Controllers
 {
+    [Culture]
     public class OfferPageController : Controller
     {
         private SellYourTimeRepository _repo = new SellYourTimeRepository();
@@ -29,7 +31,6 @@ namespace SellYourTime.Controllers
                 ViewBag.CountOfPhoto = i;
                 ViewBag.OfferId = offer.Id;
                 var user = _repo.FindUserByName(User.Identity.Name);
-                ViewBag.CurrentUserRole = user.Role;
                 if (user != null)
                 {
                     if (_repo.IsUserKudoed(user.UserName, offer.Id))
@@ -49,6 +50,7 @@ namespace SellYourTime.Controllers
                     {
                         ViewBag.ShowLikeDislike = 2;
                     }
+                    ViewBag.CurrentUserRole = user.Role;
                 }
                 else
                 {
@@ -59,6 +61,7 @@ namespace SellYourTime.Controllers
             }
         }
 
+        [Authorize]
         public ActionResult SuccessPage(int? id)
         {
             _repo.AddOrder((int)id, User.Identity.Name);

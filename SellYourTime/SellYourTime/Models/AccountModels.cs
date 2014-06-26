@@ -41,83 +41,10 @@ namespace SellYourTime.Models
         public virtual ICollection<Order> YourOrders { get; set; }
         public virtual ICollection<Order> BuyingFromYou { get; set; }
         public virtual ICollection<Like> Likes { get; set; }
+        public virtual int? NumberLikes { get; set; }
         public virtual ICollection<Dislike> Dislikes { get; set; }
+        public virtual int? NumberDislikes { get; set; }
         public virtual double? Rating { get; set; }
-}
-
-    public class Offer
-    {
-        [Key]
-        public virtual int Id { get; set; }
-        public virtual string Title { get; set; }
-        public virtual ICollection<Tag> Tags { get; set; }
-        public virtual string Description { get; set; }
-        public virtual int? Price { get; set; }
-        public virtual string FirstPhotoPath { get; set; }
-        public virtual string SecondPhotoPath { get; set; }
-        public virtual string ThirdPhotoPath { get; set; }
-        public virtual DateTime DateAdded { get; set; }
-        public virtual ICollection<Comment> Comments { get; set; }
-        public virtual UserProfile User { get; set; }
-        public virtual double? Rating { get; set; }
-        public virtual double? SumRating { get; set; }
-        public virtual ICollection<Rate> Rates { get; set; } 
-    }
-
-    public class Order
-    {
-        [Key]
-        public virtual int Id { get; set; }
-        public virtual UserProfile Seller { get; set; }
-        public virtual UserProfile Buyer { get; set; }
-        public virtual Offer Offer { get; set; }
-        public virtual DateTime PurchaseDate { get; set; }
-        public virtual String Status { get; set; }
-    }
-
-    public class Rate
-    {
-        [Key]
-        public virtual int Id { get; set; }
-        public virtual int? Value { get; set; }
-        public virtual UserProfile User { get; set; }
-        public virtual Offer Offer { get; set; }
-    }
-
-    public class Like
-    {
-        [Key]
-        public int Id { get; set; }
-
-        public virtual UserProfile RaterProfile { get; set; }
-        public virtual UserProfile UserProfile { get; set; }
-    }
-
-    public class Dislike
-    {
-        [Key]
-        public int Id { get; set; }
-
-        public virtual UserProfile RaterProfile { get; set; }
-        public virtual UserProfile UserProfile { get; set; }
-    }
-
-    public class Comment
-    {
-        [Key]
-        public virtual int Id { get; set; }
-        public virtual Offer Offer { get; set; }
-        public virtual UserProfile User { get; set; }
-        public virtual String Message { get; set; }
-        public virtual DateTime DateAdded { get; set; }
-    }
-
-    public class Tag
-    {
-        [Key]
-        public virtual int Id { get; set; }
-        public virtual string Value { get; set; }
-        public virtual ICollection<Offer> Offers { get; set; } 
     }
 
     public class RegisterExternalLoginModel
