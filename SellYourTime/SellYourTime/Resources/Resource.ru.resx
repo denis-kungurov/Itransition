@@ -372,4 +372,13 @@
   <data name="YourComment" xml:space="preserve">
     <value>Ваш коммантарий</value>
   </data>
+  <data name="Dark" xml:space="preserve">
+    <value>Тёмная</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>Светлая</value>
+  </data>
+  <data name="Styles" xml:space="preserve">
+    <value>Стили</value>
+  </data>
 </root>

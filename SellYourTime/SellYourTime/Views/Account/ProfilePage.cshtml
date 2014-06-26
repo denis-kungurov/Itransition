@@ -59,7 +59,7 @@
                                 <td onclick="location.href='@Url.Action("ShowPage", "OfferPage", new { id = order.Offer.Id })'">@order.Offer.Title</td>
                                 <td onclick="location.href='@Url.Action("ShowPage", "OfferPage", new { id = order.Offer.Id })'">@order.Offer.Price</td>
                                 <td onclick="location.href='@Url.Action("ShowPage", "OfferPage", new { id = order.Offer.Id })'">@order.Buyer.UserName (@order.PurchaseDate)</td>
-                                <td><button type="button" class="btn btn-danger col-xs-offset-1" style="padding-top: 0; padding-bottom: 0" onclick="location.href='@Url.Action("ConfirmBuyind","Account", new { orderId = @order.Id, userId = @order.Seller.UserId})'"><h4>@Resources.Resource.Confirm</h4></button></td>
+                                <td><button type="button" class="btn btn-danger" style="padding-top: 0; padding-bottom: 0" onclick="location.href='@Url.Action("ConfirmBuyind","Account", new { orderId = @order.Id, userId = @order.Seller.UserId})'"><h4>@Resources.Resource.Confirm</h4></button></td>
                             </tr>
                         }
                     </tbody>

@@ -1,48 +1,98 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>@ViewBag.Title - Sell Your Time</title>
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/bootstrapAmelia.min.css" rel="stylesheet" />
-    <link href="~/Content/Site.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-2.1.1.min.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/TagCloud.js"></script>
+    <head>
+            
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Sell Your Time</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @if (Request.Cookies["style"] == null)
+        {
+            <link href="~/Content/bootstrapAmelia.min.css" rel="stylesheet" />
+        }
+        else if (Request.Cookies["style"].Value == "1")
+        {
+            <link href="~/Content/bootstrapDarkly.min.css" rel="stylesheet" />
+        }
+        else if (Request.Cookies["style"].Value == "2")
+        {
+            <link href="~/Content/bootstrapAmelia.min.css" rel="stylesheet" />
+        }
+        <link href="~/Content/Site.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-2.1.1.min.js"></script>
+        <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/TagCloud.js"></script>
 
-</head>
+    </head>
 
-<body>
-    <div class="navbar navbar-default">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/"><img src="~/Images/10-512.png" class="logo" /> Sell Your Time</a>
+    <body>
+        <div class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/"><img src="~/Images/10-512.png" class="logo" /> Sell Your Time</a>
+            </div>
+            <div class="navbar-collapse collapse navbar-responsive-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">@Resources.Resource.MainNav</a></li>
+                    <li><a href=@Url.Action("Index","Create")>@Resources.Resource.CreateNav</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Resources.Resource.ChooseLang<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("ChangeCulture", "Home", new { lang = "ru"})">Русский</a></li>
+                            <li><a href="@Url.Action("ChangeCulture", "Home", new { lang = "en"})">English</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Resources.Resource.Styles<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li onclick="setCookie('style','1')"><a>@Resources.Resource.Dark</a></li>
+                            <li onclick ="setCookie('style','2')"><a>@Resources.Resource.Light</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" action="@Url.Action("Search", "Search")">
+                    <input type="text" name="searchQuery" id="tags" class="form-control col-lg-8" placeholder="@Resources.Resource.Search">
+                </form>
+                @Html.Partial("_LoginPartial")
+            </div>
         </div>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="/">@Resources.Resource.MainNav</a></li>
-                <li><a href=@Url.Action("Index","Create")>@Resources.Resource.CreateNav</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Resources.Resource.ChooseLang<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="@Url.Action("ChangeCulture", "Home", new { lang = "ru"})">Русский</a></li>
-                        <li><a href="@Url.Action("ChangeCulture", "Home", new { lang = "en"})">English</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <form class="navbar-form navbar-left" action="@Url.Action("Search", "Search")">
-                <input type="text" name="searchQuery" id="tags" class="form-control col-lg-8" placeholder="@Resources.Resource.Search">
-            </form>
-            @Html.Partial("_LoginPartial")
-        </div>
-    </div>
-    @RenderBody()
-</body>
+        @RenderBody()
+    </body>
 
 </html>
+<script>
+    function setCookie(name, value, options) {
+        options = options || {};
+
+        var expires = options.expires;
+
+        if (typeof expires == "number" && expires) {
+            var d = new Date();
+            d.setTime(d.getTime() + expires*1000);
+            expires = options.expires = d;
+        }
+        if (expires && expires.toUTCString) { 
+            options.expires = expires.toUTCString();
+        }
+
+        value = encodeURIComponent(value);
+
+        var updatedCookie = name + "=" + value;
+
+        for(var propName in options) {
+            updatedCookie += "; " + propName;
+            var propValue = options[propName];    
+            if (propValue !== true) { 
+                updatedCookie += "=" + propValue;
+            }
+        }
+        document.cookie = updatedCookie;
+        location.reload();
+    }
+
+</script>
