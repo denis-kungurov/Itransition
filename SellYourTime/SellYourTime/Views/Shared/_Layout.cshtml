@@ -50,8 +50,8 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Resources.Resource.Styles<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li onclick="setCookie('style','1')"><a>@Resources.Resource.Dark</a></li>
-                            <li onclick ="setCookie('style','2')"><a>@Resources.Resource.Light</a></li>
+                            <li onclick="setCookie('style', '1', '/')"><a>@Resources.Resource.Dark</a></li>
+                            <li onclick ="setCookie('style', '2', '/')"><a>@Resources.Resource.Light</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -65,34 +65,10 @@
     </body>
 
 </html>
-<script>
-    function setCookie(name, value, options) {
-        options = options || {};
-
-        var expires = options.expires;
-
-        if (typeof expires == "number" && expires) {
-            var d = new Date();
-            d.setTime(d.getTime() + expires*1000);
-            expires = options.expires = d;
-        }
-        if (expires && expires.toUTCString) { 
-            options.expires = expires.toUTCString();
-        }
-
-        value = encodeURIComponent(value);
-
-        var updatedCookie = name + "=" + value;
-
-        for(var propName in options) {
-            updatedCookie += "; " + propName;
-            var propValue = options[propName];    
-            if (propValue !== true) { 
-                updatedCookie += "=" + propValue;
-            }
-        }
-        document.cookie = updatedCookie;
-        location.reload();
-    }
-
+<script src="~/Scripts/coffee-script.js"></script>
+<script type="text/coffeescript">
+    window.setCookie = setCookie = (name, value, path) ->
+        document.cookie = name + "=" + escape(value) + ((if (path) then "; path=" + path else ""))
+        location.reload()
+    return
 </script>
